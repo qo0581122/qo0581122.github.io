@@ -1,0 +1,769 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>  HashMap源码分析 |    Franklin</title>
+  <meta name="description" content="A minimalist theme for hexo.">
+  <!-- 标签页图标 -->
+  
+
+  <!-- 图标库 -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- 动画库 -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fushaolei/cdn-white@1.0/css/animate.css"/>
+  
+  <!-- css文件 -->
+  
+<link rel="stylesheet" href="/css/white.css">
+
+  <!-- 代码高亮 -->
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.1/styles/github.css">
+
+    
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+
+<div class="menu-outer">
+    <div class="menu-inner">
+      <div class="menu-site-name  animate__animated  animate__fadeInUp">
+        <a href="/">
+          Franklin
+        </a>
+        
+      </div>
+      <div class="menu-group">
+        <ul class="menu-ul">
+        
+          <a href="/" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              HOME
+            </li>
+          </a>
+        
+          <a href="/archives" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              BLOG
+            </li>
+          </a>
+        
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="sort">
+             分类
+             <div class="categories-outer " id="sort-div">
+               <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9D%91/">坑</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9D%91/MySQL/">MySQL</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">源码分析</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/HashMap/">HashMap</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/HashSet/">HashSet</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/Hashtable/">Hashtable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/Stack/">Stack</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/Vector/">Vector</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">计算机网络基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+             </div>
+          </li>
+        
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="mobile-menu">
+            <i class="ri-menu-line"></i>
+          </li>
+        
+        </ul>
+
+      </div>
+
+    </div>
+</div>
+<div id="mobile-main" class="animate__animated  animate__fadeIn">
+  <div class="mobile-menu-inner">
+    <div class="mobile-menu-site-name animate__animated  animate__fadeInUp">
+      <a href="/">
+        Franklin
+      </a>
+    </div>
+    <div class="mobile-menu-group" id="mobile-close">
+      <i class="ri-close-line"></i>
+    </div>
+
+  </div>
+
+  <div class="mobile-menu-div">
+  
+    <a href="/" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>HOME</span>
+      </div>
+    </a>
+  
+    <a href="/archives" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>BLOG</span>
+      </div>
+    </a>
+  
+  
+  </div>
+
+
+</div>
+
+<div class="body-outer">
+  <div class="body-inner">
+    
+<article class="post-inner">
+  <div class="post-content-outer">
+    <div class="post-intro">
+      <div class="post-title animate__animated  animate__fadeInUp">HashMap源码分析</div>
+      <div class="meta-intro animate__animated  animate__fadeInUp">Apr 16 2020</div>
+      
+    </div>
+    <div class="post-content-inner">
+      <div class="post-content-inner-space">
+
+      </div>
+      <div class="post-content-main animate__animated  animate__fadeInUp">
+        <!-- top型目录 -->
+        
+        <h4 id="类结构分析"><a href="#类结构分析" class="headerlink" title="类结构分析"></a>类结构分析</h4><pre><code>public class HashMap&lt;K,V&gt; extends AbstractMap&lt;K,V&gt;
+    implements Map&lt;K,V&gt;, Cloneable, Serializable &#123;</code></pre>
+<p>继承了AbstractMap，还实现了Map&lt;K, V&gt;，Cloneable，Serializable接口</p>
+<p>Map接口提供了一些操作Map的基本方法</p>
+<p>Cloneable接口说明了此类支持克隆</p>
+<p>Serializable接口说明了此类可以进行序列化和反序列化操作。</p>
+<h4 id="变量分析"><a href="#变量分析" class="headerlink" title="变量分析"></a>变量分析</h4><pre><code>private static final long serialVersionUID = 362498820763181265L;
+/**
+ * 默认的初始容量-必须是2的幂
+ */
+static final int DEFAULT_INITIAL_CAPACITY = 1 &lt;&lt; 4; // aka 16
+
+/**
+ * 最大容量，如果更高的值是由任何一个带有参数的构造函数隐式指定的，则使用该值。必须是2的幂&lt;= 1&lt;&lt;30。
+ */
+static final int MAXIMUM_CAPACITY = 1 &lt;&lt; 30;
+
+/**
+ * 负载因子，在构造函数中没有指定时使用的负载因子。
+ */
+static final float DEFAULT_LOAD_FACTOR = 0.75f;
+
+/**
+ * 列表变树的阈值。使用树而不是列表的容器计数阈值。当向至少有这么多节点的bin中添加元素时，bin将被转换为树。该值必须大于2，并且应该至少为8，以便与树木移除时关于收缩后转换回普通桶的假设相吻合。
+ */
+static final int TREEIFY_THRESHOLD = 8;
+
+/**
+ * 树变列表的阈值。在调整大小操作期间取消(拆分)存储的存储库计数阈值。应小于TREEIFY_THRESHOLD，且最多6个网格进行收缩检测下去除。
+ */
+static final int UNTREEIFY_THRESHOLD = 6;
+
+/**
+ * 可以对容器进行treeified的最小表容量。
+(否则，如果一个bin中有太多节点，就会重新调整表的大小。)
+至少4 * TREEIFY_THRESHOLD，以避免调整大小和treeification阀值之间的冲突。
+ */
+static final int MIN_TREEIFY_CAPACITY = 64;
+
+    /**
+     * 表，第一次使用时初始化，并根据需要调整大小。当分配时，长度总是2的幂。(在某些操作中，我们还允许长度为零，以允许当前不需要的引导机制。)
+     */
+    transient Node&lt;K,V&gt;[] table;
+
+    /**
+     * 保存缓存entrySet ()。注意，AbstractMap字段用于keySet()和values()。
+     */
+    transient Set&lt;Map.Entry&lt;K,V&gt;&gt; entrySet;
+
+    /**
+     * 此映射中包含的键-值映射的数目。
+     */
+    transient int size;
+
+    /**
+     * 这个HashMap在结构上被修改的次数结构修改是指改变HashMap中映射的数量或修改其内部结构(例如，重新散列)的次数
+     */
+    transient int modCount;
+
+    /**
+     * 要调整大小的下一个大小值(容量*负载因子)。
+     */
+    int threshold;
+
+    /**
+     * 哈希表的负载因子。
+     *
+     * @serial
+     */
+    final float loadFactor;</code></pre>
+<h4 id="内部类分析"><a href="#内部类分析" class="headerlink" title="内部类分析"></a>内部类分析</h4><pre><code>/**
+ * 基本的哈希bin节点
+ */
+    static class Node&lt;K,V&gt; implements Map.Entry&lt;K,V&gt; &#123;
+    final int hash;   //哈希码
+    final K key; //键
+    V value; //值
+    Node&lt;K,V&gt; next; //用于链接下一个节点
+
+    Node(int hash, K key, V value, Node&lt;K,V&gt; next) &#123;
+        this.hash = hash;
+        this.key = key;
+        this.value = value;
+        this.next = next;
+    &#125;
+
+    public final K getKey()        &#123; return key; &#125;
+    public final V getValue()      &#123; return value; &#125;
+    public final String toString() &#123; return key + &quot;=&quot; + value; &#125;
+
+    //重写了hashCode方法
+    public final int hashCode() &#123;
+        return Objects.hashCode(key) ^ Objects.hashCode(value);
+    &#125;
+
+    public final V setValue(V newValue) &#123;
+        V oldValue = value;
+        value = newValue;
+        return oldValue;
+    &#125;
+    //重写了equlas方法，当键相等时，判断值是否相等
+    public final boolean equals(Object o) &#123;
+        if (o == this)
+            return true;
+        if (o instanceof Map.Entry) &#123;
+            Map.Entry&lt;?,?&gt; e = (Map.Entry&lt;?,?&gt;)o;
+            if (Objects.equals(key, e.getKey()) &amp;&amp;
+                Objects.equals(value, e.getValue()))
+                return true;
+        &#125;
+        return false;
+    &#125;
+&#125;</code></pre>
+<h4 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h4><pre><code>/**
+ * 构造一个空的指定初始容量和负载因子的HashMap
+ *
+ * @param  initialCapacity the initial capacity
+ * @param  loadFactor      the load factor
+ * @throws IllegalArgumentException if the initial capacity is negative
+ *         or the load factor is nonpositive
+ */
+public HashMap(int initialCapacity, float loadFactor) &#123;
+    if (initialCapacity &lt; 0) //如果初始容量小于0抛出异常
+        throw new IllegalArgumentException(&quot;Illegal initial capacity: &quot; +
+                                           initialCapacity);
+    if (initialCapacity &gt; MAXIMUM_CAPACITY) //如果初始容量大于最大容量，把初始容量设为最大容量
+        initialCapacity = MAXIMUM_CAPACITY;
+    if (loadFactor &lt;= 0 || Float.isNaN(loadFactor))//如果加载因子小于等于0或者不是数字则抛出异常
+        throw new IllegalArgumentException(&quot;Illegal load factor: &quot; +
+                                           loadFactor);
+    this.loadFactor = loadFactor;
+    this.threshold = tableSizeFor(initialCapacity);
+&#125;
+    /**
+     * 构造一个空的HashMap,具有指定的初始容量和默认的负载因子0.75
+     */
+    public HashMap(int initialCapacity) &#123;
+        this(initialCapacity, DEFAULT_LOAD_FACTOR);
+    &#125;
+
+    /**
+     * 构造一个空的HashMap，具有默认的初始容量16和默认的负载因子0.75
+     */
+    public HashMap() &#123;
+        this.loadFactor = DEFAULT_LOAD_FACTOR; // all other fields defaulted
+    &#125;
+
+    /**
+     * 使用与指定的相同的映射构造一个新的HashMap。HashMap是使用默认的负载因子(0.75)和足够容纳指定Map中的映射的初始容量创建的。
+     *
+     * @param   m the map whose mappings are to be placed in this map
+     * @throws  NullPointerException if the specified map is null
+     */
+    public HashMap(Map&lt;? extends K, ? extends V&gt; m) &#123;
+        this.loadFactor = DEFAULT_LOAD_FACTOR;
+        putMapEntries(m, false);
+    &#125;
+    /**
+     * 实现了Map。是pulAll和Map的构造函数
+     *
+     * @param m the map
+     * @param evict false when initially constructing this map, else
+     * true (relayed to method afterNodeInsertion).
+     */
+    final void putMapEntries(Map&lt;? extends K, ? extends V&gt; m, boolean evict) &#123;
+        int s = m.size();  //获取Map的实际容量
+        if (s &gt; 0) &#123;  //如果实际容量大于0
+            if (table == null) &#123; // pre-size
+                float ft = ((float)s / loadFactor) + 1.0F;
+                int t = ((ft &lt; (float)MAXIMUM_CAPACITY) ?
+                         (int)ft : MAXIMUM_CAPACITY);
+                if (t &gt; threshold)
+                    threshold = tableSizeFor(t);
+            &#125;
+            else if (s &gt; threshold)
+                resize();
+            for (Map.Entry&lt;? extends K, ? extends V&gt; e : m.entrySet()) &#123;
+                K key = e.getKey();
+                V value = e.getValue();
+                putVal(hash(key), key, value, false, evict);
+            &#125;
+        &#125;
+    &#125;</code></pre>
+<h4 id="扩容的核心方法"><a href="#扩容的核心方法" class="headerlink" title="扩容的核心方法"></a>扩容的核心方法</h4><pre><code>/**
+ * 规范化容量参数，保证容量大小为2的幂次方。例如18，因为大于16，所以变为32.例如35，因为比32大，返回64
+ * tableSizeFormatter表大小规范器
+ */
+static final int tableSizeFor(int cap) &#123;
+    int n = cap - 1;  //n |= i 的意思是 n = n | i, &gt;&gt;&gt;逻辑右移
+    n |= n &gt;&gt;&gt; 1;  // n = n | n &gt;&gt;&gt; 1
+    n |= n &gt;&gt;&gt; 2; 
+    n |= n &gt;&gt;&gt; 4; 
+    n |= n &gt;&gt;&gt; 8; 
+    n |= n &gt;&gt;&gt; 16; 
+    return (n &lt; 0) ? 1 : (n &gt;= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1; 
+&#125;
+/**
+  * 扩容机制
+  * 初始化或加倍表大小。如果为空，则按照字段阈值中持有的初始容量目标分配。
+  * 否则，因为我们使用的是2的幂展开，所以每个bin中的元素必须保持相同的索引，或者在新表中以2的幂偏移移动。
+  */
+final Node&lt;K,V&gt;[] resize() &#123;
+        Node&lt;K,V&gt;[] oldTab = table; //获取表
+        int oldCap = (oldTab == null) ? 0 : oldTab.length; //获取表的容量
+        int oldThr = threshold; //获取要调整大小的下一个大小值
+        int newCap, newThr = 0; 
+        if (oldCap &gt; 0) &#123; //如果表的旧容量大于0
+            if (oldCap &gt;= MAXIMUM_CAPACITY) &#123; //如果表的旧容量大于默认的最大容量值
+                threshold = Integer.MAX_VALUE; //把要调整大小的下一个大小值设置为整型数据类型的最大值
+                return oldTab;
+            &#125;
+            else if ((newCap = oldCap &lt;&lt; 1) &lt; MAXIMUM_CAPACITY &amp;&amp;
+                     oldCap &gt;= DEFAULT_INITIAL_CAPACITY) //如果旧容量的二分之一小于默认的最大容量，并且旧容量大于默认的初始容量
+                newThr = oldThr &lt;&lt; 1; //把新的要调整大小的下一个大小值（修改容量的阈值）设置为旧的的2倍
+        &#125;
+        else if (oldThr &gt; 0) //如果旧容量小于等于0并且旧的要调整大小的下一个大小值（修改容量的阈值）大于0的情况下
+            newCap = oldThr; //把新的容量设置为旧的要调整大小的下一个大小值（修改容量的阈值）
+        else &#123;  //如果旧容量和调整容量的阈值都小于等于0
+            newCap = DEFAULT_INITIAL_CAPACITY; //把新的容量设置为默认值16
+            newThr = (int)(DEFAULT_LOAD_FACTOR * DEFAULT_INITIAL_CAPACITY);//新的阈值设置为16*0.75=12
+        &#125;
+        if (newThr == 0) &#123; //如果新的阈值为0
+            float ft = (float)newCap * loadFactor; 
+            newThr = (newCap &lt; MAXIMUM_CAPACITY &amp;&amp; ft &lt; (float)MAXIMUM_CAPACITY ?
+                      (int)ft : Integer.MAX_VALUE); //如果新的容量和ft都满足最大容量的情况下，设置新的阈值为ft，即当前的容量*0.75
+        &#125;
+        threshold = newThr; //真正的设置新阈值
+        @SuppressWarnings(&#123;&quot;rawtypes&quot;,&quot;unchecked&quot;&#125;)
+            Node&lt;K,V&gt;[] newTab = (Node&lt;K,V&gt;[])new Node[newCap];
+        table = newTab; //设置具有新容量的表
+        if (oldTab != null) &#123; //如果旧的表不为空
+            for (int j = 0; j &lt; oldCap; ++j) &#123; //对表进行遍历
+                Node&lt;K,V&gt; e;
+                if ((e = oldTab[j]) != null) &#123; //对表的结点进行遍历，用中间值e获取当前结点
+                    oldTab[j] = null; //把当前结点设置为null
+                    if (e.next == null) //如果当前结点没有后结点
+                        newTab[e.hash &amp; (newCap - 1)] = e; //把当前结点赋值到新表对应的位置上
+                    else if (e instanceof TreeNode) //如果结点为树结点
+                        ((TreeNode&lt;K,V&gt;)e).split(this, newTab, j, oldCap);//把结点赋值到新表的对应位置
+                    else &#123; //把原本的一条链表分为了两条链接到新表上，例如16容量的旧表下标为1的链表会分成两条链接到下标为1和17的新表上
+                        Node&lt;K,V&gt; loHead = null, loTail = null; //分为了两条链表，一条lo
+                        Node&lt;K,V&gt; hiHead = null, hiTail = null; //一条hi
+                        Node&lt;K,V&gt; next;
+                        do &#123; //对链表进行遍历
+                            next = e.next; //获取当前结点的后结点next
+                            if ((e.hash &amp; oldCap) == 0) &#123;//对当前结点进行判断，并加入lo链
+                                if (loTail == null)
+                                    loHead = e;
+                                else
+                                    loTail.next = e;
+                                loTail = e;
+                            &#125;
+                            else &#123; //加入hi链
+                                if (hiTail == null)
+                                    hiHead = e;
+                                else
+                                    hiTail.next = e;
+                                hiTail = e;
+                            &#125;
+                        &#125; while ((e = next) != null);
+                        if (loTail != null) &#123;
+                            loTail.next = null;
+                            newTab[j] = loHead; //把lo链链接到新表上，位置与旧表一样
+                        &#125;
+                        if (hiTail != null) &#123; //把hi链链接到新表上，位置为旧的位置加上旧的容量
+                            hiTail.next = null;
+                            newTab[j + oldCap] = hiHead;
+                        &#125;
+                    &#125;
+                &#125;
+            &#125;
+        &#125;
+        return newTab;
+    &#125;
+
+    /**
+     * 替换指定哈希表的索引处bin中的所有链接节点
+     */
+    final void treeifyBin(Node&lt;K,V&gt;[] tab, int hash) &#123;
+        int n, index; Node&lt;K,V&gt; e;
+        if (tab == null || (n = tab.length) &lt; MIN_TREEIFY_CAPACITY)
+            resize(); //如果表为空或者表的默认容量达不到转变为树结构的设定值则重新调整大小
+        else if ((e = tab[index = (n - 1) &amp; hash]) != null) &#123; //获取表数组的结点
+            TreeNode&lt;K,V&gt; hd = null, tl = null;
+            do &#123;
+                TreeNode&lt;K,V&gt; p = replacementTreeNode(e, null);
+                if (tl == null)
+                    hd = p;
+                else &#123;
+                    p.prev = tl;
+                    tl.next = p;
+                &#125;
+                tl = p;
+            &#125; while ((e = e.next) != null);
+            if ((tab[index] = hd) != null)
+                hd.treeify(tab);
+        &#125;
+    &#125;</code></pre>
+<h4 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h4><h5 id="size（）"><a href="#size（）" class="headerlink" title="size（）"></a>size（）</h5><pre><code>/**
+ * 返回表中键值映射的数目，也就是表的实际容量
+ *
+ * @return the number of key-value mappings in this map
+ */
+public int size() &#123;
+    return size;
+&#125;</code></pre>
+<h5 id="empty（）"><a href="#empty（）" class="headerlink" title="empty（）"></a>empty（）</h5><pre><code>/**
+ * 返回真，如果表中键值映射的数目等于0
+ *
+ * @return &lt;tt&gt;true&lt;/tt&gt; if this map contains no key-value mappings
+ */
+public boolean isEmpty() &#123;
+    return size == 0;
+&#125;</code></pre>
+<h5 id="get（）"><a href="#get（）" class="headerlink" title="get（）"></a>get（）</h5><pre><code>/**
+ * 返回指定键映射到的值，如果此映射不包含键的映射，则返回null。
+ * 返回null有两种情况，一是此映射的值就为null，但还是会返回null。
+ * 二是表中找不到此映射，所以可以使用containsKey方法来区分这两种情况
+ *
+ * @see #put(Object, Object)
+ */
+public V get(Object key) &#123;
+    Node&lt;K,V&gt; e;
+    return (e = getNode(hash(key), key)) == null ? null : e.value;
+&#125;</code></pre>
+<h5 id="getNode（）"><a href="#getNode（）" class="headerlink" title="getNode（）"></a>getNode（）</h5><pre><code>/**
+ * 实现了Map接口的get相关方法，根据指定的哈希码和键来查找哈希结点
+ *
+ * @param hash hash for key
+ * @param key the key
+ * @return the node, or null if none
+ */
+final Node&lt;K,V&gt; getNode(int hash, Object key) &#123;
+    Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; first, e; int n; K k;
+    if ((tab = table) != null &amp;&amp; (n = tab.length) &gt; 0 &amp;&amp;
+        (first = tab[(n - 1) &amp; hash]) != null) &#123; //如果数组不为空，并且数组的长度大于0，根据哈希码查找哈希码对应的数组位置的一个结点，此位置可能会有多个结点，且可能为链表形式或树形式，（n-1）&amp; hash等于 hash % n，其中n为表的长度，而表的长度为2的幂次方。
+        if (first.hash == hash &amp;&amp; //把需要查找的哈希码跟键来与第一个哈希结点做对比。
+            ((k = first.key) == key || (key != null &amp;&amp; key.equals(k))))
+            return first;
+        if ((e = first.next) != null) &#123; //如果第一个哈希结点后面还有结点链接
+            if (first instanceof TreeNode) //先判断第一个结点是否为树结点，是的话则执行树的查找方法
+                return ((TreeNode&lt;K,V&gt;)first).getTreeNode(hash, key);
+            do &#123; //不是树结点则是链表，对链表进行遍历，直到查找到键相等的结点
+                if (e.hash == hash &amp;&amp;
+                    ((k = e.key) == key || (key != null &amp;&amp; key.equals(k))))
+                    return e;
+            &#125; while ((e = e.next) != null);
+        &#125;
+    &#125;
+    return null;
+&#125;</code></pre>
+<h5 id="constainsKey（Object-key）"><a href="#constainsKey（Object-key）" class="headerlink" title="constainsKey（Object key）"></a>constainsKey（Object key）</h5><pre><code>/**
+ * 如果此映射表包含指定键的映射，则返回true
+ *
+ * @param   key   The key whose presence in this map is to be tested
+ * @return &lt;tt&gt;true&lt;/tt&gt; if this map contains a mapping for the specified
+ * key.
+ */
+public boolean containsKey(Object key) &#123;
+    return getNode(hash(key), key) != null;
+&#125;</code></pre>
+<h5 id="put-K-key-V-value"><a href="#put-K-key-V-value" class="headerlink" title="put(K key, V value)"></a>put(K key, V value)</h5><pre><code>/**
+ * 将指定值与此映射表中的指定键关联。如果映射之前包含键的映射，则替换旧值。
+ */
+public V put(K key, V value) &#123;
+    return putVal(hash(key), key, value, false, true);
+&#125;</code></pre>
+<h5 id="putVal-int-hash-K-key-V-value-boolean-onlyIfAbsent-boolean-evict"><a href="#putVal-int-hash-K-key-V-value-boolean-onlyIfAbsent-boolean-evict" class="headerlink" title="putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict)"></a>putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict)</h5><pre><code>/**
+ * 实现了Map接口的put方法
+ *
+ * @param hash hash for key
+ * @param key the key
+ * @param value the value to put
+ * @param onlyIfAbsent if true, don&#39;t change existing value
+ * @param evict if false, the table is in creation mode.
+ * @return previous value, or null if none
+ */
+final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
+               boolean evict) &#123;
+    Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; p; int n, i;
+    if ((tab = table) == null || (n = tab.length) == 0) 
+        n = (tab = resize()).length; //获取表的实际容量
+    if ((p = tab[i = (n - 1) &amp; hash]) == null) //获取hash所对应的位置
+        tab[i] = newNode(hash, key, value, null);//如果此位置为空则新建立一个节点
+    else &#123; //不为空
+        Node&lt;K,V&gt; e; K k;
+        if (p.hash == hash &amp;&amp; //如果hash所对应的位置的第一个结点的key与Key参数相同
+            ((k = p.key) == key || (key != null &amp;&amp; key.equals(k))))
+            e = p; //获取此结点
+        else if (p instanceof TreeNode) //不相同时判断是否是树树节点，
+            e = ((TreeNode&lt;K,V&gt;)p).putTreeVal(this, tab, hash, key, value); //
+        else &#123;//不是树节点则为链表，最后会返回加入新结点的结点
+            for (int binCount = 0; ; ++binCount) &#123; //对链表进行遍历
+                if ((e = p.next) == null) &#123; //找到链表的尾结点并在其后链接新结点
+                    p.next = newNode(hash, key, value, null);
+                    if (binCount &gt;= TREEIFY_THRESHOLD - 1) // 加入后判断链表的长度是否满足链表转变为树结构的设定值
+                        treeifyBin(tab, hash); //把链表转变为树结构
+                    break;
+                &#125;
+                if (e.hash == hash &amp;&amp;
+                    ((k = e.key) == key || (key != null &amp;&amp; key.equals(k))))
+                    break;
+                p = e;
+            &#125;
+        &#125;
+        if (e != null) &#123; //返回此结点的value
+            V oldValue = e.value;
+            if (!onlyIfAbsent || oldValue == null)
+                e.value = value;
+            afterNodeAccess(e);
+            return oldValue;
+        &#125;
+    &#125;
+    ++modCount;
+    if (++size &gt; threshold) //判断此时表的实际容量是否满足要调整大小的下一个大小值
+        resize();
+    afterNodeInsertion(evict);
+    return null;
+&#125;</code></pre>
+<h5 id="removeNode-int-hash-Object-key-Object-value-boolean-matchValue-boolean-movable"><a href="#removeNode-int-hash-Object-key-Object-value-boolean-matchValue-boolean-movable" class="headerlink" title="removeNode(int hash, Object key, Object value, boolean matchValue, boolean movable)"></a>removeNode(int hash, Object key, Object value, boolean matchValue, boolean movable)</h5><pre><code>/**
+ * 实现了Map接口的remove方法
+ *
+ * @param hash hash for key
+ * @param key the key
+ * @param value the value to match if matchValue, else ignored
+ * @param matchValue if true only remove if value is equal
+ * @param movable if false do not move other nodes while removing
+ * @return the node, or null if none
+ */
+final Node&lt;K,V&gt; removeNode(int hash, Object key, Object value,
+                           boolean matchValue, boolean movable) &#123;
+    Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; p; int n, index;
+    if ((tab = table) != null &amp;&amp; (n = tab.length) &gt; 0 &amp;&amp;
+        (p = tab[index = (n - 1) &amp; hash]) != null) &#123; //如果表不为空，并且hash对应位置存在有结点
+        Node&lt;K,V&gt; node = null, e; K k; V v;
+        if (p.hash == hash &amp;&amp;
+            ((k = p.key) == key || (key != null &amp;&amp; key.equals(k))))
+            node = p; //将要删除的结点与该位置第一个结点进行对比，如果key相同则获取该结点
+        else if ((e = p.next) != null) &#123; //如果不等于且存在下一个结点
+            if (p instanceof TreeNode) //判断是否为树结构。
+                node = ((TreeNode&lt;K,V&gt;)p).getTreeNode(hash, key);
+            else &#123; //为链表结构则对链表进行遍历，找要删除的结点
+                do &#123;
+                    if (e.hash == hash &amp;&amp;
+                        ((k = e.key) == key ||
+                         (key != null &amp;&amp; key.equals(k)))) &#123;
+                        node = e;
+                        break;
+                    &#125;
+                    p = e;
+                &#125; while ((e = e.next) != null);
+            &#125;
+        &#125;//找到要删除的结点并再次与删除条件进行对比，判断是否真的是要删除的结点
+        if (node != null &amp;&amp; (!matchValue || (v = node.value) == value ||
+                             (value != null &amp;&amp; value.equals(v)))) &#123;
+            if (node instanceof TreeNode) //对不同的结构执行不同的删除方法
+                ((TreeNode&lt;K,V&gt;)node).removeTreeNode(this, tab, movable);
+            else if (node == p)
+                tab[index] = node.next;
+            else
+                p.next = node.next;
+            ++modCount;
+            --size;
+            afterNodeRemoval(node);
+            return node;
+        &#125;
+    &#125;
+    return null;
+&#125;</code></pre>
+<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p>HashMap的数据结构为数组，链表，树。</p>
+<p>方法没有synchronized关键字修饰，所以是线程不安全的。</p>
+<p>HashMap的初始容量为16.</p>
+<p>经过自动扩容后的容量为原来容量的两倍。例如原本容量为n，则新容量为2n。</p>
+<p>插入结点是在链表的结尾处加入新结点。</p>
+<p>在自动扩容的过程中，会把原本的一条链表分为两条链表重新映射到新的哈希表上，比如原本的位置下标为i，则新的位置为i， i + 旧的容量大小。</p>
+<p>会根据Key和value的哈希码进行^操作后得到的哈希码来判断此映射在哈希表上的位置。</p>
+<p>HashMap的tableSizeFor方法和（n - 1）&amp; hash 的算法和扩容机制的扩容增量为2n，保证了2的幂这个性质。</p>
+
+        <!-- 分类文章 -->
+        
+          <div class="post-categoris-bottom">
+            <div class="post-categoris-name">源码分析</div>
+            <ul>
+            
+            
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2020/04/15/ArrayList%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="post-categoris-bottom-link">
+                  ArrayList源码分析
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="me base">
+                  <a  href="/2020/04/16/HashMap%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" class="post-categoris-bottom-link">
+                  HashMap源码分析
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2020/04/18/HashSet%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="post-categoris-bottom-link">
+                  HashSet源码分析
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2020/04/20/Hashtable%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="post-categoris-bottom-link">
+                  Hashtable源码分析
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2020/04/22/Stack%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="post-categoris-bottom-link">
+                  Stack源码分析
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2020/04/24/Vector%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="post-categoris-bottom-link">
+                  Vector源码分析
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            </ul>
+
+          </div>
+
+        
+      </div>
+      <div class="post-content-inner-space">
+        
+          <div class="space-toc-main animate__animated  animate__fadeInUp">
+            
+           </div>
+        
+      </div>
+   </div>
+    <!-- 评论 -->
+    
+  </div>
+</article>
+  </div>
+</div>
+
+
+
+<!-- 如果是home模式的话，不在首页就显示footer，如果不是home模式的话 所有都显示footer -->
+
+  <div class="footer-outer animate__animated  animate__fadeInUp">
+    <div class="footer-inner">
+    <div class="footer-text">
+    <p>感谢你的观看，如有疑问请联系</p>
+
+    </div>
+    <div class="footer-contact">
+    <ul class="footer-ul">
+        
+        <li class="footer-li">
+            <a href="https://github.com/FuShaoLei/hexo-theme-white" target="_blank">
+                <i class="ri-github-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="mailto:1012428032@qq.com" target="_blank">
+                <i class="ri-mail-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="https://qo0581122.github.io/wechat/" target="_blank">
+                <i class="ri-chat-1-line"></i>
+            </a>
+        </li>
+        
+    </ul>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="/js/white.js"></script>
+
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+</body>
+</html>

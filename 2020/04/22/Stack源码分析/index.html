@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>  Wechat |    Franklin</title>
+  <title>  Stack源码分析 |    Franklin</title>
   <meta name="description" content="A minimalist theme for hexo.">
   <!-- 标签页图标 -->
   
@@ -115,8 +115,8 @@
 <article class="post-inner">
   <div class="post-content-outer">
     <div class="post-intro">
-      <div class="post-title animate__animated  animate__fadeInUp">wechat</div>
-      <div class="meta-intro animate__animated  animate__fadeInUp">Dec 06 2020</div>
+      <div class="post-title animate__animated  animate__fadeInUp">Stack源码分析</div>
+      <div class="meta-intro animate__animated  animate__fadeInUp">Apr 22 2020</div>
       
     </div>
     <div class="post-content-inner">
@@ -126,9 +126,164 @@
       <div class="post-content-main animate__animated  animate__fadeInUp">
         <!-- top型目录 -->
         
+        <h4 id="Stack源码分析"><a href="#Stack源码分析" class="headerlink" title="Stack源码分析"></a>Stack源码分析</h4><h5 id="从类名结构分析"><a href="#从类名结构分析" class="headerlink" title="从类名结构分析"></a>从类名结构分析</h5><pre><code>public
+class Stack&lt;E&gt; extends Vector&lt;E&gt; &#123;</code></pre>
+<p>是Vector的子类，所以Stack等于是在Vector上的进一步操作。</p>
+<p>变量分析</p>
+<p>Stack覆盖了Vector的serialVersionUID</p>
+<pre><code>private static final long serialVersionUID = 1224463164541339165L;</code></pre>
+<h5 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h5><pre><code>public Stack() &#123;
+&#125;</code></pre>
+<p>只有一个默认的不带参数的构造方法</p>
+<h5 id="新方法"><a href="#新方法" class="headerlink" title="新方法"></a>新方法</h5><h6 id="push-E-item"><a href="#push-E-item" class="headerlink" title="push(E item)"></a>push(E item)</h6><pre><code>/**
+ * 将一个对象推到堆栈的顶部。
+ */
+public E push(E item) &#123;
+    addElement(item);
+
+    return item;
+&#125;</code></pre>
+<h6 id="pop"><a href="#pop" class="headerlink" title="pop( )"></a>pop( )</h6><pre><code>/**
+ * 删除堆栈顶部的对象并返回该对象
+ */
+public synchronized E pop() &#123;
+    E       obj;
+    int     len = size();
+
+    obj = peek();
+    removeElementAt(len - 1);
+
+    return obj;
+&#125;</code></pre>
+<h6 id="peek"><a href="#peek" class="headerlink" title="peek( )"></a>peek( )</h6><pre><code>/**
+ * 查看此堆栈顶部的对象，但不将其从堆栈中删除。
+ */
+public synchronized E peek() &#123;
+    int     len = size();
+
+    if (len == 0)
+        throw new EmptyStackException();
+    return elementAt(len - 1);
+&#125;</code></pre>
+<h6 id="empty"><a href="#empty" class="headerlink" title="empty( )"></a>empty( )</h6><pre><code>/**
+ * 测试堆栈是否为空
+ *
+ */
+public boolean empty() &#123;
+    return size() == 0;
+&#125;</code></pre>
+<h6 id="search-Object-o"><a href="#search-Object-o" class="headerlink" title="search(Object o)"></a>search(Object o)</h6><pre><code>/**
+ * 在堆栈中查找指定的元素
+ */
+public synchronized int search(Object o) &#123;
+    int i = lastIndexOf(o);
+
+    if (i &gt;= 0) &#123;
+        return size() - i;
+    &#125;
+    return -1;
+&#125;</code></pre>
+<h5 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h5><p>底层原理还是Vector，也就是数组，只是在Vector的基础上增添了几个方法，修改了一下增加元素删除元素的基本逻辑</p>
+
+        <!-- 分类文章 -->
+        
+          <div class="post-categoris-bottom">
+            <div class="post-categoris-name">源码分析</div>
+            <ul>
+            
+            
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2020/04/15/ArrayList%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="post-categoris-bottom-link">
+                  ArrayList源码分析
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2020/04/16/HashMap%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" class="post-categoris-bottom-link">
+                  HashMap源码分析
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2020/04/18/HashSet%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="post-categoris-bottom-link">
+                  HashSet源码分析
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2020/04/20/Hashtable%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="post-categoris-bottom-link">
+                  Hashtable源码分析
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="me base">
+                  <a  href="/2020/04/22/Stack%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="post-categoris-bottom-link">
+                  Stack源码分析
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2020/04/24/Vector%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="post-categoris-bottom-link">
+                  Vector源码分析
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            </ul>
+
+          </div>
+
         
       </div>
       <div class="post-content-inner-space">
+        
+          <div class="space-toc-main animate__animated  animate__fadeInUp">
+            
+           </div>
         
       </div>
    </div>

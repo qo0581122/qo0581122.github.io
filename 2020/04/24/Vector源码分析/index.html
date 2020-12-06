@@ -1,0 +1,453 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>  Vector源码分析 |    Franklin</title>
+  <meta name="description" content="A minimalist theme for hexo.">
+  <!-- 标签页图标 -->
+  
+
+  <!-- 图标库 -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- 动画库 -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fushaolei/cdn-white@1.0/css/animate.css"/>
+  
+  <!-- css文件 -->
+  
+<link rel="stylesheet" href="/css/white.css">
+
+  <!-- 代码高亮 -->
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.1/styles/github.css">
+
+    
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+
+<div class="menu-outer">
+    <div class="menu-inner">
+      <div class="menu-site-name  animate__animated  animate__fadeInUp">
+        <a href="/">
+          Franklin
+        </a>
+        
+      </div>
+      <div class="menu-group">
+        <ul class="menu-ul">
+        
+          <a href="/" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              HOME
+            </li>
+          </a>
+        
+          <a href="/archives" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              BLOG
+            </li>
+          </a>
+        
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="sort">
+             分类
+             <div class="categories-outer " id="sort-div">
+               <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9D%91/">坑</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9D%91/MySQL/">MySQL</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">源码分析</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/HashMap/">HashMap</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/HashSet/">HashSet</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/Hashtable/">Hashtable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/Stack/">Stack</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/Vector/">Vector</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">计算机网络基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+             </div>
+          </li>
+        
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="mobile-menu">
+            <i class="ri-menu-line"></i>
+          </li>
+        
+        </ul>
+
+      </div>
+
+    </div>
+</div>
+<div id="mobile-main" class="animate__animated  animate__fadeIn">
+  <div class="mobile-menu-inner">
+    <div class="mobile-menu-site-name animate__animated  animate__fadeInUp">
+      <a href="/">
+        Franklin
+      </a>
+    </div>
+    <div class="mobile-menu-group" id="mobile-close">
+      <i class="ri-close-line"></i>
+    </div>
+
+  </div>
+
+  <div class="mobile-menu-div">
+  
+    <a href="/" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>HOME</span>
+      </div>
+    </a>
+  
+    <a href="/archives" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>BLOG</span>
+      </div>
+    </a>
+  
+  
+  </div>
+
+
+</div>
+
+<div class="body-outer">
+  <div class="body-inner">
+    
+<article class="post-inner">
+  <div class="post-content-outer">
+    <div class="post-intro">
+      <div class="post-title animate__animated  animate__fadeInUp">Vector源码分析</div>
+      <div class="meta-intro animate__animated  animate__fadeInUp">Apr 24 2020</div>
+      
+    </div>
+    <div class="post-content-inner">
+      <div class="post-content-inner-space">
+
+      </div>
+      <div class="post-content-main animate__animated  animate__fadeInUp">
+        <!-- top型目录 -->
+        
+        <h4 id="Vector源码分析"><a href="#Vector源码分析" class="headerlink" title="Vector源码分析"></a>Vector源码分析</h4><pre><code>public class Vector&lt;E&gt;
+    extends AbstractList&lt;E&gt;
+    implements List&lt;E&gt;, RandomAccess, Cloneable, java.io.Serializable</code></pre>
+<p>Vector类继承了AbstractList类，实现了List，RandomAccess，Cloneable，Serializable接口</p>
+<p>List接口提供了一些基本的操作方法。</p>
+<p>RandomAccess接口表示该类具有快速访问的功能。</p>
+<p>Serializable接口表示该类支持进行序列化和反序列化的操作。</p>
+<p>Vector的源码跟ArrayList类似，下面只阐述具有较大区别的方法。</p>
+<p>此外，Vector的方法大部分都具有synchronized关键字修饰，所以是线程安全的。</p>
+<h5 id="变量分析"><a href="#变量分析" class="headerlink" title="变量分析"></a>变量分析</h5><pre><code>//用于储存数据
+protected Object[] elementData;
+
+/**
+ * 数据的数量
+ */
+protected int elementCount;
+
+/**
+ * 容量增量
+ * 当向量的大小大于其容量时，向量的容量自动增加的量。
+ * 如果容量增量小于或等于0，则每次需要增长时，向量的容量将增加一倍。
+ *
+ */
+protected int capacityIncrement;
+
+/** 
+ * 序列化的版本号。用于反序列化。
+ */
+private static final long serialVersionUID = -2767605614048989439L;</code></pre>
+<h5 id="构造方法分析"><a href="#构造方法分析" class="headerlink" title="构造方法分析"></a>构造方法分析</h5><pre><code>/**
+ * 构造一个具有初始容量和容量增量的空向量
+ */
+public Vector(int initialCapacity, int capacityIncrement) &#123;
+    super();
+    if (initialCapacity &lt; 0) //如果初始容量小于0则抛出异常
+        throw new IllegalArgumentException(&quot;Illegal Capacity: &quot;+
+                                           initialCapacity);
+    this.elementData = new Object[initialCapacity];
+    this.capacityIncrement = capacityIncrement;
+&#125;
+
+/**
+ * 构造一个具有指定初始容量且其容量增量为零的空向量。
+ */
+public Vector(int initialCapacity) &#123;
+    this(initialCapacity, 0);
+&#125;
+
+/**
+ * 构造一个指定初始向量为10且其容量增量为0的空向量
+ */
+public Vector() &#123;
+    this(10);
+&#125;
+
+/**
+ * 构造一个向量，其中包含指定集合的元素，按集合的迭代器返回元素的顺序排列。
+ *
+ */
+public Vector(Collection&lt;? extends E&gt; c) &#123;
+    elementData = c.toArray();
+    elementCount = elementData.length;
+    // c.toArray might (incorrectly) not return Object[] (see 6260652)
+    if (elementData.getClass() != Object[].class)
+        elementData = Arrays.copyOf(elementData, elementCount, Object[].class);
+&#125;</code></pre>
+<h5 id="Vector自动扩容的核心方法"><a href="#Vector自动扩容的核心方法" class="headerlink" title="Vector自动扩容的核心方法"></a>Vector自动扩容的核心方法</h5><pre><code>public synchronized void ensureCapacity(int minCapacity) &#123;
+    if (minCapacity &gt; 0) &#123;
+        modCount++;
+        ensureCapacityHelper(minCapacity);
+    &#125;
+&#125;
+
+
+private void ensureCapacityHelper(int minCapacity) &#123;
+    // overflow-conscious code
+    if (minCapacity - elementData.length &gt; 0) //当最小容量参数大于当前容量时，执行grow方法
+        grow(minCapacity);
+&#125;
+
+
+private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
+
+private void grow(int minCapacity) &#123;
+    // overflow-conscious code
+    int oldCapacity = elementData.length;
+    //新容量的值为旧容量 + 容量增量
+    int newCapacity = oldCapacity + ((capacityIncrement &gt; 0) ?
+                                     capacityIncrement : oldCapacity);
+    if (newCapacity - minCapacity &lt; 0)
+        newCapacity = minCapacity;
+    if (newCapacity - MAX_ARRAY_SIZE &gt; 0)
+        newCapacity = hugeCapacity(minCapacity);
+    elementData = Arrays.copyOf(elementData, newCapacity);
+&#125;
+
+private static int hugeCapacity(int minCapacity) &#123;
+    if (minCapacity &lt; 0) // overflow
+        throw new OutOfMemoryError();
+    return (minCapacity &gt; MAX_ARRAY_SIZE) ?
+        Integer.MAX_VALUE :
+        MAX_ARRAY_SIZE;
+&#125;</code></pre>
+<p>大部分内容与ArrayList相似，其中最大的不同点是Vector的自动扩容的容量大小为当前容量加上容量增量的值。</p>
+<p>其他常用方法与ArrayList类似，只是具有synchronized关键字修饰，下面列举几个常用方法。</p>
+<h5 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h5><h6 id="size"><a href="#size" class="headerlink" title="size( )"></a>size( )</h6><pre><code>/**
+ * 返回向量的长度
+ */
+public synchronized int size() &#123;
+    return elementCount;
+&#125;</code></pre>
+<h6 id="isEmpty"><a href="#isEmpty" class="headerlink" title="isEmpty( )"></a>isEmpty( )</h6><pre><code>/**
+ * 返回向量是否为空
+ *
+ * @return  &#123;@code true&#125; if and only if this vector has
+ *          no components, that is, its size is zero;
+ *          &#123;@code false&#125; otherwise.
+ */
+public synchronized boolean isEmpty() &#123;
+    return elementCount == 0;
+&#125;</code></pre>
+<h6 id="get（int-index）"><a href="#get（int-index）" class="headerlink" title="get（int index）"></a>get（int index）</h6><pre><code>/**
+ * 返回指定位置的元素
+ */
+public synchronized E get(int index) &#123;
+    if (index &gt;= elementCount)
+        throw new ArrayIndexOutOfBoundsException(index);
+
+    return elementData(index);
+&#125;</code></pre>
+<h6 id="set-int-index-e-element"><a href="#set-int-index-e-element" class="headerlink" title="set(int index, e element)"></a>set(int index, e element)</h6><pre><code>/**
+ * 用指定的元素取代指定位置上的元素
+ */
+public synchronized E set(int index, E element) &#123;
+    if (index &gt;= elementCount)
+        throw new ArrayIndexOutOfBoundsException(index);
+
+    E oldValue = elementData(index);
+    elementData[index] = element;
+    return oldValue;
+&#125;</code></pre>
+<h6 id="add-E-e"><a href="#add-E-e" class="headerlink" title="add(E e)"></a>add(E e)</h6><pre><code>/**
+ * 增加元素，并返回增加结果(是否成功)
+ */
+public synchronized boolean add(E e) &#123;
+    modCount++;
+    ensureCapacityHelper(elementCount + 1);
+    elementData[elementCount++] = e;
+    return true;
+&#125;</code></pre>
+<h6 id="remove-Object-o"><a href="#remove-Object-o" class="headerlink" title="remove(Object o)"></a>remove(Object o)</h6><pre><code>/**
+ * 删除指定元素并返回删除结果(是否成功)
+ *
+ * @param o element to be removed from this Vector, if present
+ * @return true if the Vector contained the specified element
+ * @since 1.2
+ */
+public boolean remove(Object o) &#123;
+    return removeElement(o);
+&#125;</code></pre>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>Vector与ArrayList类似，区别在于扩容机制的不同，Vector的扩容值为当前容量加上容量增量的值，ArrayList的扩容值为当前容量加上当前容量的一半。还有一个区别就是Vector的方法都具有synchronziable关键字修饰，所以Vector是相对线程安全的，但由于存在重量锁，所以效率上没有ArrayList快。</p>
+
+        <!-- 分类文章 -->
+        
+          <div class="post-categoris-bottom">
+            <div class="post-categoris-name">源码分析</div>
+            <ul>
+            
+            
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2020/04/15/ArrayList%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="post-categoris-bottom-link">
+                  ArrayList源码分析
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2020/04/16/HashMap%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" class="post-categoris-bottom-link">
+                  HashMap源码分析
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2020/04/18/HashSet%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="post-categoris-bottom-link">
+                  HashSet源码分析
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2020/04/20/Hashtable%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="post-categoris-bottom-link">
+                  Hashtable源码分析
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2020/04/22/Stack%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="post-categoris-bottom-link">
+                  Stack源码分析
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="me base">
+                  <a  href="/2020/04/24/Vector%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="post-categoris-bottom-link">
+                  Vector源码分析
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            </ul>
+
+          </div>
+
+        
+      </div>
+      <div class="post-content-inner-space">
+        
+          <div class="space-toc-main animate__animated  animate__fadeInUp">
+            
+           </div>
+        
+      </div>
+   </div>
+    <!-- 评论 -->
+    
+  </div>
+</article>
+  </div>
+</div>
+
+
+
+<!-- 如果是home模式的话，不在首页就显示footer，如果不是home模式的话 所有都显示footer -->
+
+  <div class="footer-outer animate__animated  animate__fadeInUp">
+    <div class="footer-inner">
+    <div class="footer-text">
+    <p>感谢你的观看，如有疑问请联系</p>
+
+    </div>
+    <div class="footer-contact">
+    <ul class="footer-ul">
+        
+        <li class="footer-li">
+            <a href="https://github.com/FuShaoLei/hexo-theme-white" target="_blank">
+                <i class="ri-github-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="mailto:1012428032@qq.com" target="_blank">
+                <i class="ri-mail-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="https://qo0581122.github.io/wechat/" target="_blank">
+                <i class="ri-chat-1-line"></i>
+            </a>
+        </li>
+        
+    </ul>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="/js/white.js"></script>
+
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+</body>
+</html>

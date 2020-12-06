@@ -1,0 +1,340 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>  排序算法 |    Franklin</title>
+  <meta name="description" content="A minimalist theme for hexo.">
+  <!-- 标签页图标 -->
+  
+
+  <!-- 图标库 -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- 动画库 -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fushaolei/cdn-white@1.0/css/animate.css"/>
+  
+  <!-- css文件 -->
+  
+<link rel="stylesheet" href="/css/white.css">
+
+  <!-- 代码高亮 -->
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.1/styles/github.css">
+
+    
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+
+<div class="menu-outer">
+    <div class="menu-inner">
+      <div class="menu-site-name  animate__animated  animate__fadeInUp">
+        <a href="/">
+          Franklin
+        </a>
+        
+      </div>
+      <div class="menu-group">
+        <ul class="menu-ul">
+        
+          <a href="/" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              HOME
+            </li>
+          </a>
+        
+          <a href="/archives" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              BLOG
+            </li>
+          </a>
+        
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="sort">
+             分类
+             <div class="categories-outer " id="sort-div">
+               <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9D%91/">坑</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9D%91/MySQL/">MySQL</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">源码分析</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/HashMap/">HashMap</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/HashSet/">HashSet</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/Hashtable/">Hashtable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/Stack/">Stack</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/Vector/">Vector</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">计算机网络基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+             </div>
+          </li>
+        
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="mobile-menu">
+            <i class="ri-menu-line"></i>
+          </li>
+        
+        </ul>
+
+      </div>
+
+    </div>
+</div>
+<div id="mobile-main" class="animate__animated  animate__fadeIn">
+  <div class="mobile-menu-inner">
+    <div class="mobile-menu-site-name animate__animated  animate__fadeInUp">
+      <a href="/">
+        Franklin
+      </a>
+    </div>
+    <div class="mobile-menu-group" id="mobile-close">
+      <i class="ri-close-line"></i>
+    </div>
+
+  </div>
+
+  <div class="mobile-menu-div">
+  
+    <a href="/" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>HOME</span>
+      </div>
+    </a>
+  
+    <a href="/archives" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>BLOG</span>
+      </div>
+    </a>
+  
+  
+  </div>
+
+
+</div>
+
+<div class="body-outer">
+  <div class="body-inner">
+    
+<article class="post-inner">
+  <div class="post-content-outer">
+    <div class="post-intro">
+      <div class="post-title animate__animated  animate__fadeInUp">排序算法</div>
+      <div class="meta-intro animate__animated  animate__fadeInUp">May 15 2020</div>
+      
+    </div>
+    <div class="post-content-inner">
+      <div class="post-content-inner-space">
+
+      </div>
+      <div class="post-content-main animate__animated  animate__fadeInUp">
+        <!-- top型目录 -->
+        
+        <h3 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h3><h4 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h4><p>思路：每一轮选取未排定的部分中<strong>最小</strong>的部分交换到未排定部分的最开头，经过若干个步骤，就能排定整个数组。即：先选出最小的，再选出第 2 小的，以此类推。</p>
+<pre><code>public void sorted(int[] nums) &#123;
+    for(int i = 0; i &lt; nums.length - 1; i++)&#123;
+        int minIndex = i;
+        for(int j = i + 1; j &lt; nums.length; j++)&#123;
+            if(nums[i] &gt; nums[j])&#123;
+                minIndex = j;
+            &#125;
+        &#125;
+        int temp = nums[i];
+        nums[i] = nums[minIndex];
+        nums[minIndex] = temp;
+    &#125;
+&#125;</code></pre>
+<p>时间复杂度O(N2)</p>
+<p>空间复杂度O (1)</p>
+<h4 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h4><p>思路：暂存一个元素，然后之前元素逐个后移，留出空位，再把暂存的元素填补进空位，不断循环重复直到循环结束</p>
+<pre><code>public int[] sortArray(int[] nums) &#123;
+    int len = nums.length;
+    // 循环不变量：将 nums[i] 插入到区间 [0, i) 使之成为有序数组
+    for (int i = 1; i &lt; len; i++) &#123;
+        // 先暂存这个元素，然后之前元素逐个后移，留出空位
+        int temp = nums[i];
+        int j = i;
+        // 注意边界 j &gt; 0
+        while (j &gt; 0 &amp;&amp; nums[j - 1] &gt; temp) &#123;
+            nums[j] = nums[j - 1];
+            j--;
+        &#125;
+        nums[j] = temp;
+    &#125;
+    return nums;
+&#125;</code></pre>
+<p>时间复杂度：O(n2)</p>
+<p>空间复杂度: O(1)</p>
+<p>例题：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/insertion-sort-list/">对链表进行插入排序</a>。(<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/insertion-sort-list/)%E3%80%82">https://leetcode-cn.com/problems/insertion-sort-list/)。</a></p>
+<h4 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h4><p>归并过程为：比较a[i]和b[j]的大小，若a[i]≤b[j]，则将第一个有序表中的元素a[i]复制到r[k]中，并令i和k分别加上1；否则将第二个有序表中的元素b[j]复制到r[k]中，并令j和k分别加上1，如此循环下去，直到其中一个有序表取完，然后再将另一个有序表中剩余的元素复制到r中从下标k到下标t的单元。归并排序的算法我们通常用递归实现，先把待排序区间[s,t]以中点二分，接着把左边子区间排序，再把右边子区间排序，最后把左区间和右区间用一次归并操作合并成有序的区间[s,t]。</p>
+<p>例题请参考：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/merge-sorted-array/">https://leetcode-cn.com/problems/merge-sorted-array/</a></p>
+<p>经典例题：《剑指 Offer》第 51 题：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/shu-zu-zhong-de-ni-xu-dui-lcof/">数组中的逆序对</a>，照着归并排序的思路就能写出来。</p>
+<p>「力扣」第 315 题：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/count-of-smaller-numbers-after-self/">计算右侧小于当前元素的个数</a>，它们是一个问题。</p>
+<h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><p>思路：现在我们的数组是这样的：<code>&#123;1,4,5,6,2,7,8,67,9,44&#125;</code>，既然我们<strong>比7小的在左边，比7大的在右边</strong>，那么我们只要将”左边“的排好顺序，又将”右边“的排好序，那整个数组是不是就有序了？想一想，是不是？</p>
+<p>又回顾一下递归：”左边“的排好顺序，”右边“的排好序，跟我们<strong>第一趟排序的做法</strong>是不是一致的？</p>
+<p><strong>只不过是参数不一样</strong>：第一趟排序是任选了一个支点，比支点小的在左边，比支点大的在右边。那么，我们想要”左边“的排好顺序，只要<strong>在”左边“部分找一个支点</strong>，比支点小的在左边，比支点大的在右边。</p>
+<p>…………..最终可以得到一个有序的数组</p>
+<p>基础版：</p>
+<pre><code>public void quick(int[] arrays, int left, int right)&#123;
+   if(left &gt;= right) return;
+   int p = partition(arrays, left, right);
+   quick(arrays, left, p-1);
+   quick(arrays, p + 1, right);
+&#125;
+
+public int partition(int[] arrays, int left, int right) &#123;
+   int base = arrays[left];
+   int p = left; //用于记录小于base值的一个边界
+   for (int i = left + 1; i &lt;= right; i++) &#123;
+      if (arrays[i] &lt; base) &#123;//如果边界p的右边存在大于base的值，则把它与i的值交换，同时记录下新的边界值
+         p++;
+         swap(arrays, p, i);
+         ;
+      &#125;
+   &#125;
+   //因为base值此时在left的位置，而小于base的边界值在p的位置，
+   // 则两个进行交换就可以保证p之前的数据都小于base，p之后的数据大于base
+   swap(arrays, p, left);
+   return p; //并将此时base的位置返回
+&#125;
+
+public void swap(int[] arrays, int i, int j)&#123;
+   int temp = arrays[i];
+   arrays[i] = arrays[j];
+   arrays[j] = temp;
+&#125;</code></pre>
+<p>时间复杂度：O(N log⁡N)，这里 N 是数组的长度；<br>空间复杂度：O(log⁡N)，这里占用的空间主要来自递归函数的栈空间。</p>
+<p>优化方法：</p>
+<p>1、原本base值是选取最左边的元素，现在变为随机选取base值</p>
+<p>2、可以设置一个阈值，当right - left + 1小于这个阈值的时候使用插入排序</p>
+<p>使用「快速排序」解决的经典问题（非常重要）：</p>
+<ul>
+<li>TopK 问题：「力扣」第 215 题：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/kth-largest-element-in-an-array/">数组中的第 K 个最大元素</a>；</li>
+</ul>
+<h4 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h4><p>堆排序是选择排序的优化，选择排序需要在未排定的部分里通过「打擂台」的方式选出最大的元素（复杂度 O(N)O(N)O(N)），而「堆排序」就把未排定的部分构建成一个「堆」，这样就能以 O(log⁡N)O(\log N)O(logN) 的方式选出最大元素；<br>堆是一种相当有意思的数据结构，它在很多语言里也被命名为「优先队列」。它是建立在数组上的「树」结构，类似的数据结构还有「并查集」「线段树」等</p>
+<p>作者：liweiwei1419<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/sort-an-array/solution/fu-xi-ji-chu-pai-xu-suan-fa-java-by-liweiwei1419/">https://leetcode-cn.com/problems/sort-an-array/solution/fu-xi-ji-chu-pai-xu-suan-fa-java-by-liweiwei1419/</a><br>来源：力扣（LeetCode）<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+
+        <!-- 分类文章 -->
+        
+          <div class="post-categoris-bottom">
+            <div class="post-categoris-name">算法</div>
+            <ul>
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+                <li class="me base">
+                  <a  href="/2020/05/15/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="post-categoris-bottom-link">
+                  排序算法
+                </a>
+                </li>
+              
+              
+            
+            
+            </ul>
+
+          </div>
+
+        
+      </div>
+      <div class="post-content-inner-space">
+        
+          <div class="space-toc-main animate__animated  animate__fadeInUp">
+            
+           </div>
+        
+      </div>
+   </div>
+    <!-- 评论 -->
+    
+  </div>
+</article>
+  </div>
+</div>
+
+
+
+<!-- 如果是home模式的话，不在首页就显示footer，如果不是home模式的话 所有都显示footer -->
+
+  <div class="footer-outer animate__animated  animate__fadeInUp">
+    <div class="footer-inner">
+    <div class="footer-text">
+    <p>感谢你的观看，如有疑问请联系</p>
+
+    </div>
+    <div class="footer-contact">
+    <ul class="footer-ul">
+        
+        <li class="footer-li">
+            <a href="https://github.com/FuShaoLei/hexo-theme-white" target="_blank">
+                <i class="ri-github-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="mailto:1012428032@qq.com" target="_blank">
+                <i class="ri-mail-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="https://qo0581122.github.io/wechat/" target="_blank">
+                <i class="ri-chat-1-line"></i>
+            </a>
+        </li>
+        
+    </ul>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="/js/white.js"></script>
+
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+</body>
+</html>
