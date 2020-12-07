@@ -1,164 +1,1156 @@
-
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>   Franklin</title>
-  <meta name="description" content="A minimalist theme for hexo.">
-  <!-- 标签页图标 -->
+  <meta charset="utf-8">
   
 
-  <!-- 图标库 -->
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
-  <!-- 动画库 -->
   
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fushaolei/cdn-white@1.0/css/animate.css"/>
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
   
-  <!-- css文件 -->
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
-<link rel="stylesheet" href="/css/white.css">
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
-  <!-- 代码高亮 -->
-  
-    
-      
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.1/styles/github.css">
-
-    
-  
 <meta name="generator" content="Hexo 5.2.0"></head>
 
-
 <body>
-
-<div class="menu-outer">
-    <div class="menu-inner">
-      <div class="menu-site-name  animate__animated  animate__fadeInUp">
-        <a href="/">
-          Franklin
-        </a>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
         
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
       </div>
-      <div class="menu-group">
-        <ul class="menu-ul">
-        
-          <a href="/" class="nav-link">
-            <li class="menu-li  animate__animated  animate__fadeInUp">
-              HOME
-            </li>
-          </a>
-        
-          <a href="/archives" class="nav-link">
-            <li class="menu-li  animate__animated  animate__fadeInUp">
-              BLOG
-            </li>
-          </a>
-        
-        
-          <li class="menu-li animate__animated  animate__fadeInUp" id="sort">
-             分类
-             <div class="categories-outer " id="sort-div">
-               <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9D%91/">坑</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9D%91/MySQL/">MySQL</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Spring%E6%A1%86%E6%9E%B6%E8%A7%A3%E6%9E%90/">Spring框架解析</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%AE%97%E6%B3%95/">算法</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">源码分析</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/HashMap/">HashMap</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/HashSet/">HashSet</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/Hashtable/">Hashtable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/Stack/">Stack</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/Vector/">Vector</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">排序算法</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">计算机网络基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
-             </div>
-          </li>
-        
-        
-          <li class="menu-li animate__animated  animate__fadeInUp" id="mobile-menu">
-            <i class="ri-menu-line"></i>
-          </li>
-        
-        </ul>
-
-      </div>
-
     </div>
-</div>
-<div id="mobile-main" class="animate__animated  animate__fadeIn">
-  <div class="mobile-menu-inner">
-    <div class="mobile-menu-site-name animate__animated  animate__fadeInUp">
-      <a href="/">
-        Franklin
-      </a>
-    </div>
-    <div class="mobile-menu-group" id="mobile-close">
-      <i class="ri-close-line"></i>
-    </div>
-
   </div>
-
-  <div class="mobile-menu-div">
+</header>
+      <div class="outer">
+        <section id="main">
   
-    <a href="/" class="mobile-nav-link">
-      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
-        <span>HOME</span>
-      </div>
-    </a>
-  
-    <a href="/archives" class="mobile-nav-link">
-      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
-        <span>BLOG</span>
-      </div>
-    </a>
-  
-  
-  </div>
-
-
-</div>
-
-<div class="body-outer">
-  <div class="body-inner">
+    <article id="post-HashMap源码解析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/16/HashMap%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" class="article-date">
+  <time datetime="2020-04-15T16:00:00.000Z" itemprop="datePublished">2020-04-16</time>
+</a>
     
-    <section class="intro-section">
-    <div class="intro-content">
-        <div class="intro-title animate__animated  animate__fadeInUp">Franklin</div>
-        <div class="intro-sub animate__animated  animate__fadeInUp"><p>一个普通码农记录学习的日常</p>
-</div>
-        <p class="intro-contact animate__animated  animate__fadeInUp">
-            
-                <a href="https://qo0581122.github.io/" target="_blank">
-                    <i class="ri-github-line"></i>
-                </a>
-            
-                <a href="mailto:1012428032@qq.com" target="_blank">
-                    <i class="ri-mail-line"></i>
-                </a>
-            
-                <a href="https://qo0581122.github.io/wechat/" target="_blank">
-                    <i class="ri-chat-1-line"></i>
-                </a>
-            
-        </p>
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">源码分析</a>►<a class="article-category-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/HashMap/">HashMap</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/16/HashMap%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/">HashMap源码分析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="类结构分析"><a href="#类结构分析" class="headerlink" title="类结构分析"></a>类结构分析</h4><pre><code>public class HashMap&lt;K,V&gt; extends AbstractMap&lt;K,V&gt;
+    implements Map&lt;K,V&gt;, Cloneable, Serializable &#123;</code></pre>
+<p>继承了AbstractMap，还实现了Map&lt;K, V&gt;，Cloneable，Serializable接口</p>
+<p>Map接口提供了一些操作Map的基本方法</p>
+<p>Cloneable接口说明了此类支持克隆</p>
+<p>Serializable接口说明了此类可以进行序列化和反序列化操作。</p>
+<h4 id="变量分析"><a href="#变量分析" class="headerlink" title="变量分析"></a>变量分析</h4><pre><code>private static final long serialVersionUID = 362498820763181265L;
+/**
+ * 默认的初始容量-必须是2的幂
+ */
+static final int DEFAULT_INITIAL_CAPACITY = 1 &lt;&lt; 4; // aka 16
+
+/**
+ * 最大容量，如果更高的值是由任何一个带有参数的构造函数隐式指定的，则使用该值。必须是2的幂&lt;= 1&lt;&lt;30。
+ */
+static final int MAXIMUM_CAPACITY = 1 &lt;&lt; 30;
+
+/**
+ * 负载因子，在构造函数中没有指定时使用的负载因子。
+ */
+static final float DEFAULT_LOAD_FACTOR = 0.75f;
+
+/**
+ * 列表变树的阈值。使用树而不是列表的容器计数阈值。当向至少有这么多节点的bin中添加元素时，bin将被转换为树。该值必须大于2，并且应该至少为8，以便与树木移除时关于收缩后转换回普通桶的假设相吻合。
+ */
+static final int TREEIFY_THRESHOLD = 8;
+
+/**
+ * 树变列表的阈值。在调整大小操作期间取消(拆分)存储的存储库计数阈值。应小于TREEIFY_THRESHOLD，且最多6个网格进行收缩检测下去除。
+ */
+static final int UNTREEIFY_THRESHOLD = 6;
+
+/**
+ * 可以对容器进行treeified的最小表容量。
+(否则，如果一个bin中有太多节点，就会重新调整表的大小。)
+至少4 * TREEIFY_THRESHOLD，以避免调整大小和treeification阀值之间的冲突。
+ */
+static final int MIN_TREEIFY_CAPACITY = 64;
+
+    /**
+     * 表，第一次使用时初始化，并根据需要调整大小。当分配时，长度总是2的幂。(在某些操作中，我们还允许长度为零，以允许当前不需要的引导机制。)
+     */
+    transient Node&lt;K,V&gt;[] table;
+
+    /**
+     * 保存缓存entrySet ()。注意，AbstractMap字段用于keySet()和values()。
+     */
+    transient Set&lt;Map.Entry&lt;K,V&gt;&gt; entrySet;
+
+    /**
+     * 此映射中包含的键-值映射的数目。
+     */
+    transient int size;
+
+    /**
+     * 这个HashMap在结构上被修改的次数结构修改是指改变HashMap中映射的数量或修改其内部结构(例如，重新散列)的次数
+     */
+    transient int modCount;
+
+    /**
+     * 要调整大小的下一个大小值(容量*负载因子)。
+     */
+    int threshold;
+
+    /**
+     * 哈希表的负载因子。
+     *
+     * @serial
+     */
+    final float loadFactor;</code></pre>
+<h4 id="内部类分析"><a href="#内部类分析" class="headerlink" title="内部类分析"></a>内部类分析</h4><pre><code>/**
+ * 基本的哈希bin节点
+ */
+    static class Node&lt;K,V&gt; implements Map.Entry&lt;K,V&gt; &#123;
+    final int hash;   //哈希码
+    final K key; //键
+    V value; //值
+    Node&lt;K,V&gt; next; //用于链接下一个节点
+
+    Node(int hash, K key, V value, Node&lt;K,V&gt; next) &#123;
+        this.hash = hash;
+        this.key = key;
+        this.value = value;
+        this.next = next;
+    &#125;
+
+    public final K getKey()        &#123; return key; &#125;
+    public final V getValue()      &#123; return value; &#125;
+    public final String toString() &#123; return key + &quot;=&quot; + value; &#125;
+
+    //重写了hashCode方法
+    public final int hashCode() &#123;
+        return Objects.hashCode(key) ^ Objects.hashCode(value);
+    &#125;
+
+    public final V setValue(V newValue) &#123;
+        V oldValue = value;
+        value = newValue;
+        return oldValue;
+    &#125;
+    //重写了equlas方法，当键相等时，判断值是否相等
+    public final boolean equals(Object o) &#123;
+        if (o == this)
+            return true;
+        if (o instanceof Map.Entry) &#123;
+            Map.Entry&lt;?,?&gt; e = (Map.Entry&lt;?,?&gt;)o;
+            if (Objects.equals(key, e.getKey()) &amp;&amp;
+                Objects.equals(value, e.getValue()))
+                return true;
+        &#125;
+        return false;
+    &#125;
+&#125;</code></pre>
+<h4 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h4><pre><code>/**
+ * 构造一个空的指定初始容量和负载因子的HashMap
+ *
+ * @param  initialCapacity the initial capacity
+ * @param  loadFactor      the load factor
+ * @throws IllegalArgumentException if the initial capacity is negative
+ *         or the load factor is nonpositive
+ */
+public HashMap(int initialCapacity, float loadFactor) &#123;
+    if (initialCapacity &lt; 0) //如果初始容量小于0抛出异常
+        throw new IllegalArgumentException(&quot;Illegal initial capacity: &quot; +
+                                           initialCapacity);
+    if (initialCapacity &gt; MAXIMUM_CAPACITY) //如果初始容量大于最大容量，把初始容量设为最大容量
+        initialCapacity = MAXIMUM_CAPACITY;
+    if (loadFactor &lt;= 0 || Float.isNaN(loadFactor))//如果加载因子小于等于0或者不是数字则抛出异常
+        throw new IllegalArgumentException(&quot;Illegal load factor: &quot; +
+                                           loadFactor);
+    this.loadFactor = loadFactor;
+    this.threshold = tableSizeFor(initialCapacity);
+&#125;
+    /**
+     * 构造一个空的HashMap,具有指定的初始容量和默认的负载因子0.75
+     */
+    public HashMap(int initialCapacity) &#123;
+        this(initialCapacity, DEFAULT_LOAD_FACTOR);
+    &#125;
+
+    /**
+     * 构造一个空的HashMap，具有默认的初始容量16和默认的负载因子0.75
+     */
+    public HashMap() &#123;
+        this.loadFactor = DEFAULT_LOAD_FACTOR; // all other fields defaulted
+    &#125;
+
+    /**
+     * 使用与指定的相同的映射构造一个新的HashMap。HashMap是使用默认的负载因子(0.75)和足够容纳指定Map中的映射的初始容量创建的。
+     *
+     * @param   m the map whose mappings are to be placed in this map
+     * @throws  NullPointerException if the specified map is null
+     */
+    public HashMap(Map&lt;? extends K, ? extends V&gt; m) &#123;
+        this.loadFactor = DEFAULT_LOAD_FACTOR;
+        putMapEntries(m, false);
+    &#125;
+    /**
+     * 实现了Map。是pulAll和Map的构造函数
+     *
+     * @param m the map
+     * @param evict false when initially constructing this map, else
+     * true (relayed to method afterNodeInsertion).
+     */
+    final void putMapEntries(Map&lt;? extends K, ? extends V&gt; m, boolean evict) &#123;
+        int s = m.size();  //获取Map的实际容量
+        if (s &gt; 0) &#123;  //如果实际容量大于0
+            if (table == null) &#123; // pre-size
+                float ft = ((float)s / loadFactor) + 1.0F;
+                int t = ((ft &lt; (float)MAXIMUM_CAPACITY) ?
+                         (int)ft : MAXIMUM_CAPACITY);
+                if (t &gt; threshold)
+                    threshold = tableSizeFor(t);
+            &#125;
+            else if (s &gt; threshold)
+                resize();
+            for (Map.Entry&lt;? extends K, ? extends V&gt; e : m.entrySet()) &#123;
+                K key = e.getKey();
+                V value = e.getValue();
+                putVal(hash(key), key, value, false, evict);
+            &#125;
+        &#125;
+    &#125;</code></pre>
+<h4 id="扩容的核心方法"><a href="#扩容的核心方法" class="headerlink" title="扩容的核心方法"></a>扩容的核心方法</h4><pre><code>/**
+ * 规范化容量参数，保证容量大小为2的幂次方。例如18，因为大于16，所以变为32.例如35，因为比32大，返回64
+ * tableSizeFormatter表大小规范器
+ */
+static final int tableSizeFor(int cap) &#123;
+    int n = cap - 1;  //n |= i 的意思是 n = n | i, &gt;&gt;&gt;逻辑右移
+    n |= n &gt;&gt;&gt; 1;  // n = n | n &gt;&gt;&gt; 1
+    n |= n &gt;&gt;&gt; 2; 
+    n |= n &gt;&gt;&gt; 4; 
+    n |= n &gt;&gt;&gt; 8; 
+    n |= n &gt;&gt;&gt; 16; 
+    return (n &lt; 0) ? 1 : (n &gt;= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1; 
+&#125;
+/**
+  * 扩容机制
+  * 初始化或加倍表大小。如果为空，则按照字段阈值中持有的初始容量目标分配。
+  * 否则，因为我们使用的是2的幂展开，所以每个bin中的元素必须保持相同的索引，或者在新表中以2的幂偏移移动。
+  */
+final Node&lt;K,V&gt;[] resize() &#123;
+        Node&lt;K,V&gt;[] oldTab = table; //获取表
+        int oldCap = (oldTab == null) ? 0 : oldTab.length; //获取表的容量
+        int oldThr = threshold; //获取要调整大小的下一个大小值
+        int newCap, newThr = 0; 
+        if (oldCap &gt; 0) &#123; //如果表的旧容量大于0
+            if (oldCap &gt;= MAXIMUM_CAPACITY) &#123; //如果表的旧容量大于默认的最大容量值
+                threshold = Integer.MAX_VALUE; //把要调整大小的下一个大小值设置为整型数据类型的最大值
+                return oldTab;
+            &#125;
+            else if ((newCap = oldCap &lt;&lt; 1) &lt; MAXIMUM_CAPACITY &amp;&amp;
+                     oldCap &gt;= DEFAULT_INITIAL_CAPACITY) //如果旧容量的二分之一小于默认的最大容量，并且旧容量大于默认的初始容量
+                newThr = oldThr &lt;&lt; 1; //把新的要调整大小的下一个大小值（修改容量的阈值）设置为旧的的2倍
+        &#125;
+        else if (oldThr &gt; 0) //如果旧容量小于等于0并且旧的要调整大小的下一个大小值（修改容量的阈值）大于0的情况下
+            newCap = oldThr; //把新的容量设置为旧的要调整大小的下一个大小值（修改容量的阈值）
+        else &#123;  //如果旧容量和调整容量的阈值都小于等于0
+            newCap = DEFAULT_INITIAL_CAPACITY; //把新的容量设置为默认值16
+            newThr = (int)(DEFAULT_LOAD_FACTOR * DEFAULT_INITIAL_CAPACITY);//新的阈值设置为16*0.75=12
+        &#125;
+        if (newThr == 0) &#123; //如果新的阈值为0
+            float ft = (float)newCap * loadFactor; 
+            newThr = (newCap &lt; MAXIMUM_CAPACITY &amp;&amp; ft &lt; (float)MAXIMUM_CAPACITY ?
+                      (int)ft : Integer.MAX_VALUE); //如果新的容量和ft都满足最大容量的情况下，设置新的阈值为ft，即当前的容量*0.75
+        &#125;
+        threshold = newThr; //真正的设置新阈值
+        @SuppressWarnings(&#123;&quot;rawtypes&quot;,&quot;unchecked&quot;&#125;)
+            Node&lt;K,V&gt;[] newTab = (Node&lt;K,V&gt;[])new Node[newCap];
+        table = newTab; //设置具有新容量的表
+        if (oldTab != null) &#123; //如果旧的表不为空
+            for (int j = 0; j &lt; oldCap; ++j) &#123; //对表进行遍历
+                Node&lt;K,V&gt; e;
+                if ((e = oldTab[j]) != null) &#123; //对表的结点进行遍历，用中间值e获取当前结点
+                    oldTab[j] = null; //把当前结点设置为null
+                    if (e.next == null) //如果当前结点没有后结点
+                        newTab[e.hash &amp; (newCap - 1)] = e; //把当前结点赋值到新表对应的位置上
+                    else if (e instanceof TreeNode) //如果结点为树结点
+                        ((TreeNode&lt;K,V&gt;)e).split(this, newTab, j, oldCap);//把结点赋值到新表的对应位置
+                    else &#123; //把原本的一条链表分为了两条链接到新表上，例如16容量的旧表下标为1的链表会分成两条链接到下标为1和17的新表上
+                        Node&lt;K,V&gt; loHead = null, loTail = null; //分为了两条链表，一条lo
+                        Node&lt;K,V&gt; hiHead = null, hiTail = null; //一条hi
+                        Node&lt;K,V&gt; next;
+                        do &#123; //对链表进行遍历
+                            next = e.next; //获取当前结点的后结点next
+                            if ((e.hash &amp; oldCap) == 0) &#123;//对当前结点进行判断，并加入lo链
+                                if (loTail == null)
+                                    loHead = e;
+                                else
+                                    loTail.next = e;
+                                loTail = e;
+                            &#125;
+                            else &#123; //加入hi链
+                                if (hiTail == null)
+                                    hiHead = e;
+                                else
+                                    hiTail.next = e;
+                                hiTail = e;
+                            &#125;
+                        &#125; while ((e = next) != null);
+                        if (loTail != null) &#123;
+                            loTail.next = null;
+                            newTab[j] = loHead; //把lo链链接到新表上，位置与旧表一样
+                        &#125;
+                        if (hiTail != null) &#123; //把hi链链接到新表上，位置为旧的位置加上旧的容量
+                            hiTail.next = null;
+                            newTab[j + oldCap] = hiHead;
+                        &#125;
+                    &#125;
+                &#125;
+            &#125;
+        &#125;
+        return newTab;
+    &#125;
+
+    /**
+     * 替换指定哈希表的索引处bin中的所有链接节点
+     */
+    final void treeifyBin(Node&lt;K,V&gt;[] tab, int hash) &#123;
+        int n, index; Node&lt;K,V&gt; e;
+        if (tab == null || (n = tab.length) &lt; MIN_TREEIFY_CAPACITY)
+            resize(); //如果表为空或者表的默认容量达不到转变为树结构的设定值则重新调整大小
+        else if ((e = tab[index = (n - 1) &amp; hash]) != null) &#123; //获取表数组的结点
+            TreeNode&lt;K,V&gt; hd = null, tl = null;
+            do &#123;
+                TreeNode&lt;K,V&gt; p = replacementTreeNode(e, null);
+                if (tl == null)
+                    hd = p;
+                else &#123;
+                    p.prev = tl;
+                    tl.next = p;
+                &#125;
+                tl = p;
+            &#125; while ((e = e.next) != null);
+            if ((tab[index] = hd) != null)
+                hd.treeify(tab);
+        &#125;
+    &#125;</code></pre>
+<h4 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h4><h5 id="size（）"><a href="#size（）" class="headerlink" title="size（）"></a>size（）</h5><pre><code>/**
+ * 返回表中键值映射的数目，也就是表的实际容量
+ *
+ * @return the number of key-value mappings in this map
+ */
+public int size() &#123;
+    return size;
+&#125;</code></pre>
+<h5 id="empty（）"><a href="#empty（）" class="headerlink" title="empty（）"></a>empty（）</h5><pre><code>/**
+ * 返回真，如果表中键值映射的数目等于0
+ *
+ * @return &lt;tt&gt;true&lt;/tt&gt; if this map contains no key-value mappings
+ */
+public boolean isEmpty() &#123;
+    return size == 0;
+&#125;</code></pre>
+<h5 id="get（）"><a href="#get（）" class="headerlink" title="get（）"></a>get（）</h5><pre><code>/**
+ * 返回指定键映射到的值，如果此映射不包含键的映射，则返回null。
+ * 返回null有两种情况，一是此映射的值就为null，但还是会返回null。
+ * 二是表中找不到此映射，所以可以使用containsKey方法来区分这两种情况
+ *
+ * @see #put(Object, Object)
+ */
+public V get(Object key) &#123;
+    Node&lt;K,V&gt; e;
+    return (e = getNode(hash(key), key)) == null ? null : e.value;
+&#125;</code></pre>
+<h5 id="getNode（）"><a href="#getNode（）" class="headerlink" title="getNode（）"></a>getNode（）</h5><pre><code>/**
+ * 实现了Map接口的get相关方法，根据指定的哈希码和键来查找哈希结点
+ *
+ * @param hash hash for key
+ * @param key the key
+ * @return the node, or null if none
+ */
+final Node&lt;K,V&gt; getNode(int hash, Object key) &#123;
+    Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; first, e; int n; K k;
+    if ((tab = table) != null &amp;&amp; (n = tab.length) &gt; 0 &amp;&amp;
+        (first = tab[(n - 1) &amp; hash]) != null) &#123; //如果数组不为空，并且数组的长度大于0，根据哈希码查找哈希码对应的数组位置的一个结点，此位置可能会有多个结点，且可能为链表形式或树形式，（n-1）&amp; hash等于 hash % n，其中n为表的长度，而表的长度为2的幂次方。
+        if (first.hash == hash &amp;&amp; //把需要查找的哈希码跟键来与第一个哈希结点做对比。
+            ((k = first.key) == key || (key != null &amp;&amp; key.equals(k))))
+            return first;
+        if ((e = first.next) != null) &#123; //如果第一个哈希结点后面还有结点链接
+            if (first instanceof TreeNode) //先判断第一个结点是否为树结点，是的话则执行树的查找方法
+                return ((TreeNode&lt;K,V&gt;)first).getTreeNode(hash, key);
+            do &#123; //不是树结点则是链表，对链表进行遍历，直到查找到键相等的结点
+                if (e.hash == hash &amp;&amp;
+                    ((k = e.key) == key || (key != null &amp;&amp; key.equals(k))))
+                    return e;
+            &#125; while ((e = e.next) != null);
+        &#125;
+    &#125;
+    return null;
+&#125;</code></pre>
+<h5 id="constainsKey（Object-key）"><a href="#constainsKey（Object-key）" class="headerlink" title="constainsKey（Object key）"></a>constainsKey（Object key）</h5><pre><code>/**
+ * 如果此映射表包含指定键的映射，则返回true
+ *
+ * @param   key   The key whose presence in this map is to be tested
+ * @return &lt;tt&gt;true&lt;/tt&gt; if this map contains a mapping for the specified
+ * key.
+ */
+public boolean containsKey(Object key) &#123;
+    return getNode(hash(key), key) != null;
+&#125;</code></pre>
+<h5 id="put-K-key-V-value"><a href="#put-K-key-V-value" class="headerlink" title="put(K key, V value)"></a>put(K key, V value)</h5><pre><code>/**
+ * 将指定值与此映射表中的指定键关联。如果映射之前包含键的映射，则替换旧值。
+ */
+public V put(K key, V value) &#123;
+    return putVal(hash(key), key, value, false, true);
+&#125;</code></pre>
+<h5 id="putVal-int-hash-K-key-V-value-boolean-onlyIfAbsent-boolean-evict"><a href="#putVal-int-hash-K-key-V-value-boolean-onlyIfAbsent-boolean-evict" class="headerlink" title="putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict)"></a>putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict)</h5><pre><code>/**
+ * 实现了Map接口的put方法
+ *
+ * @param hash hash for key
+ * @param key the key
+ * @param value the value to put
+ * @param onlyIfAbsent if true, don&#39;t change existing value
+ * @param evict if false, the table is in creation mode.
+ * @return previous value, or null if none
+ */
+final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
+               boolean evict) &#123;
+    Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; p; int n, i;
+    if ((tab = table) == null || (n = tab.length) == 0) 
+        n = (tab = resize()).length; //获取表的实际容量
+    if ((p = tab[i = (n - 1) &amp; hash]) == null) //获取hash所对应的位置
+        tab[i] = newNode(hash, key, value, null);//如果此位置为空则新建立一个节点
+    else &#123; //不为空
+        Node&lt;K,V&gt; e; K k;
+        if (p.hash == hash &amp;&amp; //如果hash所对应的位置的第一个结点的key与Key参数相同
+            ((k = p.key) == key || (key != null &amp;&amp; key.equals(k))))
+            e = p; //获取此结点
+        else if (p instanceof TreeNode) //不相同时判断是否是树树节点，
+            e = ((TreeNode&lt;K,V&gt;)p).putTreeVal(this, tab, hash, key, value); //
+        else &#123;//不是树节点则为链表，最后会返回加入新结点的结点
+            for (int binCount = 0; ; ++binCount) &#123; //对链表进行遍历
+                if ((e = p.next) == null) &#123; //找到链表的尾结点并在其后链接新结点
+                    p.next = newNode(hash, key, value, null);
+                    if (binCount &gt;= TREEIFY_THRESHOLD - 1) // 加入后判断链表的长度是否满足链表转变为树结构的设定值
+                        treeifyBin(tab, hash); //把链表转变为树结构
+                    break;
+                &#125;
+                if (e.hash == hash &amp;&amp;
+                    ((k = e.key) == key || (key != null &amp;&amp; key.equals(k))))
+                    break;
+                p = e;
+            &#125;
+        &#125;
+        if (e != null) &#123; //返回此结点的value
+            V oldValue = e.value;
+            if (!onlyIfAbsent || oldValue == null)
+                e.value = value;
+            afterNodeAccess(e);
+            return oldValue;
+        &#125;
+    &#125;
+    ++modCount;
+    if (++size &gt; threshold) //判断此时表的实际容量是否满足要调整大小的下一个大小值
+        resize();
+    afterNodeInsertion(evict);
+    return null;
+&#125;</code></pre>
+<h5 id="removeNode-int-hash-Object-key-Object-value-boolean-matchValue-boolean-movable"><a href="#removeNode-int-hash-Object-key-Object-value-boolean-matchValue-boolean-movable" class="headerlink" title="removeNode(int hash, Object key, Object value, boolean matchValue, boolean movable)"></a>removeNode(int hash, Object key, Object value, boolean matchValue, boolean movable)</h5><pre><code>/**
+ * 实现了Map接口的remove方法
+ *
+ * @param hash hash for key
+ * @param key the key
+ * @param value the value to match if matchValue, else ignored
+ * @param matchValue if true only remove if value is equal
+ * @param movable if false do not move other nodes while removing
+ * @return the node, or null if none
+ */
+final Node&lt;K,V&gt; removeNode(int hash, Object key, Object value,
+                           boolean matchValue, boolean movable) &#123;
+    Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; p; int n, index;
+    if ((tab = table) != null &amp;&amp; (n = tab.length) &gt; 0 &amp;&amp;
+        (p = tab[index = (n - 1) &amp; hash]) != null) &#123; //如果表不为空，并且hash对应位置存在有结点
+        Node&lt;K,V&gt; node = null, e; K k; V v;
+        if (p.hash == hash &amp;&amp;
+            ((k = p.key) == key || (key != null &amp;&amp; key.equals(k))))
+            node = p; //将要删除的结点与该位置第一个结点进行对比，如果key相同则获取该结点
+        else if ((e = p.next) != null) &#123; //如果不等于且存在下一个结点
+            if (p instanceof TreeNode) //判断是否为树结构。
+                node = ((TreeNode&lt;K,V&gt;)p).getTreeNode(hash, key);
+            else &#123; //为链表结构则对链表进行遍历，找要删除的结点
+                do &#123;
+                    if (e.hash == hash &amp;&amp;
+                        ((k = e.key) == key ||
+                         (key != null &amp;&amp; key.equals(k)))) &#123;
+                        node = e;
+                        break;
+                    &#125;
+                    p = e;
+                &#125; while ((e = e.next) != null);
+            &#125;
+        &#125;//找到要删除的结点并再次与删除条件进行对比，判断是否真的是要删除的结点
+        if (node != null &amp;&amp; (!matchValue || (v = node.value) == value ||
+                             (value != null &amp;&amp; value.equals(v)))) &#123;
+            if (node instanceof TreeNode) //对不同的结构执行不同的删除方法
+                ((TreeNode&lt;K,V&gt;)node).removeTreeNode(this, tab, movable);
+            else if (node == p)
+                tab[index] = node.next;
+            else
+                p.next = node.next;
+            ++modCount;
+            --size;
+            afterNodeRemoval(node);
+            return node;
+        &#125;
+    &#125;
+    return null;
+&#125;</code></pre>
+<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p>HashMap的数据结构为数组，链表，树。</p>
+<p>方法没有synchronized关键字修饰，所以是线程不安全的。</p>
+<p>HashMap的初始容量为16.</p>
+<p>经过自动扩容后的容量为原来容量的两倍。例如原本容量为n，则新容量为2n。</p>
+<p>插入结点是在链表的结尾处加入新结点。</p>
+<p>在自动扩容的过程中，会把原本的一条链表分为两条链表重新映射到新的哈希表上，比如原本的位置下标为i，则新的位置为i， i + 旧的容量大小。</p>
+<p>会根据Key和value的哈希码进行^操作后得到的哈希码来判断此映射在哈希表上的位置。</p>
+<p>HashMap的tableSizeFor方法和（n - 1）&amp; hash 的算法和扩容机制的扩容增量为2n，保证了2的幂这个性质。</p>
+
+      
     </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/04/16/HashMap%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" data-id="ckida46k8001k1oux8e9dev00" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HashMap/" rel="tag">HashMap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" rel="tag">源码分析</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ArrayList源码分析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/15/ArrayList%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="article-date">
+  <time datetime="2020-04-14T16:00:00.000Z" itemprop="datePublished">2020-04-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">源码分析</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/15/ArrayList%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">ArrayList源码分析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="ArrayList源码分析"><a href="#ArrayList源码分析" class="headerlink" title="ArrayList源码分析"></a>ArrayList源码分析</h3><h4 id="1-结构分析"><a href="#1-结构分析" class="headerlink" title="1. 结构分析"></a>1. 结构分析</h4><pre><code>public class ArrayList&lt;E&gt; extends AbstractList&lt;E&gt;
+        implements List&lt;E&gt;, RandomAccess, Cloneable, java.io.Serializable</code></pre>
+<p>ArrayList继承了AbstractList，实现了List，RandomAccess, Cloneable, serializable接口。</p>
+<p>下面分析一些接口的作用：</p>
+<h5 id="1-1-List接口"><a href="#1-1-List接口" class="headerlink" title="1.1 List接口"></a>1.1 List接口</h5><p>提供了一些对List进行基本操作的方法。</p>
+<h5 id="1-2-RandomAccess接口"><a href="#1-2-RandomAccess接口" class="headerlink" title="1.2 RandomAccess接口"></a>1.2 RandomAccess接口</h5><p>实现了RandomAccess接口的用意是表明ArrayList具有快速访问的功能，查询的时间复杂度为O（1）。</p>
+<h6 id="1-3-Cloneable接口"><a href="#1-3-Cloneable接口" class="headerlink" title="1.3 Cloneable接口"></a>1.3 Cloneable接口</h6><p>实现了Cloneable接口的用意是表明ArrayList可以进行克隆，该克隆为浅克隆。</p>
+<h5 id="1-4-Serializable接口"><a href="#1-4-Serializable接口" class="headerlink" title="1.4 Serializable接口"></a>1.4 Serializable接口</h5><p>实现了Serializable接口的用意是表明ArrayList可以进行序列化和反序列化，可以进行保存和传输。</p>
+<h4 id="2-源码变量分析"><a href="#2-源码变量分析" class="headerlink" title="2. 源码变量分析"></a>2. 源码变量分析</h4><pre><code>private static final long serialVersionUID = 8683452581122892189L; //序列化的版本号，是进行反序列化的凭证。
+
+private static final int DEFAULT_CAPACITY = 10; //默认容量
+
+private static final Object[] EMPTY_ELEMENTDATA = &#123;&#125;;  //用于空实例的共享空数组实例
+
+private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = &#123;&#125;; //用于默认大小的空实例的共享空数组实例。我们将其与EMPTY_ELEMENTDATA区分开来，以了解在添加第一个元素时应该膨胀多少。
+
+transient Object[] elementData;  //存储ArrayList元素的数组缓冲区。ArrayList的容量是这个数组缓冲区的长度。以数组的形式储存数据。
+
+private int size; //ArrayList的大小，也称作ArrayList的实际容量
+
+/**
+* 要分配的数组的最大大小。一些vm在数组中保留一些标题词。
+* 试图分配更大的数组可能会导致OutOfMemoryError:请求的数组大小超过VM限制
+*/
+private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;</code></pre>
+<h4 id="3-源码方法分析"><a href="#3-源码方法分析" class="headerlink" title="3. 源码方法分析"></a>3. 源码方法分析</h4><h5 id="3-1-构造方法"><a href="#3-1-构造方法" class="headerlink" title="3.1 构造方法"></a>3.1 构造方法</h5><pre><code>//构造具有指定初始容量的空列表。
+    public ArrayList(int initialCapacity) &#123; 
+        if (initialCapacity &gt; 0) &#123;  //判断指定初始容量值是否大于0
+            this.elementData = new Object[initialCapacity];  //构造列表
+        &#125; else if (initialCapacity == 0) &#123;  //判断指定初始容量是否等于0
+            this.elementData = EMPTY_ELEMENTDATA; //把列表引用指定为用于空实例的空数组
+        &#125; else &#123; //如果指定初始容量小于0则抛出异常
+            throw new IllegalArgumentException(&quot;Illegal Capacity: &quot;+
+                                               initialCapacity);
+        &#125;
+    &#125;
+
+    /**
+     * 构造一个初始容量为10的空列表。
+     */
+    public ArrayList() &#123;
+        this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA; //在这个方法完成时，列表为空数组
+    &#125;
+
+    /**
+     * 构造一个列表，其中包含指定集合的元素，按集合的迭代器返回元素的顺序排列。
+     */
+    public ArrayList(Collection&lt;? extends E&gt; c) &#123;
+        elementData = c.toArray();
+        if ((size = elementData.length) != 0) &#123;
+            // c.toArray might (incorrectly) not return Object[] (see 6260652)
+            if (elementData.getClass() != Object[].class)
+                elementData = Arrays.copyOf(elementData, size, Object[].class);
+        &#125; else &#123;
+            // replace with empty array.
+            this.elementData = EMPTY_ELEMENTDATA;
+        &#125;
+    &#125;</code></pre>
+<p>疑问：明明 <strong>ArrayList( )</strong> 方法创建的是一个空数组为什么说它的初始容量是10呢？</p>
+<p>因为在后续对列表进行操作的时候，会对其数组进行判断，如果数组的对象为<strong>DEFAULTCAPACITY_EMPTY_ELEMENTDATA</strong> 则会把初始容量设置为10。</p>
+<p>总结：ArrayList提供了三个构造方法给我们进行使用，分别是<strong>ArrayList(int initialCapacity)**，</strong>ArrayList( )<strong>，</strong>ArrayList(Collection&lt;? extends E&gt; c)** 。</p>
+<h5 id="3-2-核心方法"><a href="#3-2-核心方法" class="headerlink" title="3.2 核心方法"></a>3.2 核心方法</h5><h6 id="3-2-1-源码"><a href="#3-2-1-源码" class="headerlink" title="3.2.1 源码"></a>3.2.1 源码</h6><pre><code>  /**
+   * 如果需要增加这个ArrayList实例的容量，以确保它至少可以容纳由最小容量参数指定的元素数量。
+   *
+   * @param   minCapacity   the desired minimum capacity
+   */
+  public void ensureCapacity(int minCapacity) &#123;
+      int minExpand = (elementData != DEFAULTCAPACITY_EMPTY_ELEMENTDATA) //判断列表构建的时候是否有指定初始容量，有为0，没有为10
+          // any size if not default element table
+          ? 0
+          // larger than default for default empty table. It&#39;s already
+          // supposed to be at default size.
+          : DEFAULT_CAPACITY;
+
+      if (minCapacity &gt; minExpand) &#123; //如果最小容量参数大于初始容量或构建列表的时候有指定初始容量
+          ensureExplicitCapacity(minCapacity);
+      &#125;
+  &#125;
+
+  private void ensureCapacityInternal(int minCapacity) &#123;
+      if (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &#123; //判断列表构建的时候是否没有指定初始初始容量，是则为真
+          minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity); //取初始容量和最小容量参数中的最大值
+      &#125;
+
+      ensureExplicitCapacity(minCapacity);
+  &#125;
+
+  private void ensureExplicitCapacity(int minCapacity) &#123;
+      modCount++;
+
+      // overflow-conscious code
+      if (minCapacity - elementData.length &gt; 0)  //如果最小容量参数大于列表的容量，执行grow方法
+          grow(minCapacity);
+  &#125;
+
+  /**
+* 要分配的数组的最大大小。一些vm在数组中保留一些标题词。试图分配更大的数组可能会导致OutOfMemoryError:请求的数组大小超过VM限制
+   */
+  private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
+
+  /**
+   * 增加容量，以确保它至少可以容纳由最小容量参数指定的元素数量。
+   *
+   * @param minCapacity the desired minimum capacity
+   */
+  private void grow(int minCapacity) &#123;
+      // overflow-conscious code
+      int oldCapacity = elementData.length; //获取数组的长度，即列表的容量
+      int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1); //将新的列表容量设置为旧容量加上旧容量的二分之一
+      if (newCapacity - minCapacity &lt; 0) //如果新容量的值小于最小容量参数，则把新容量的值设置为参数的值
+          newCapacity = minCapacity;
+      if (newCapacity - MAX_ARRAY_SIZE &gt; 0) //如果新容量大于数组的最大大小
+          newCapacity = hugeCapacity(minCapacity);
+      // minCapacity is usually close to size, so this is a win:
+      elementData = Arrays.copyOf(elementData, newCapacity); //列表容量的大小变为新容量的值
+  &#125;
+
+  private static int hugeCapacity(int minCapacity) &#123;
+      if (minCapacity &lt; 0) // 参数小于0则抛出异常
+          throw new OutOfMemoryError();
+      return (minCapacity &gt; MAX_ARRAY_SIZE) ?    //如果参数值大于数组的最大大小，则返回整型的最大长度，否则返回数组的最大大小
+          Integer.MAX_VALUE :
+          MAX_ARRAY_SIZE;
+  &#125;</code></pre>
+<h6 id="3-2-2-核心方法逻辑"><a href="#3-2-2-核心方法逻辑" class="headerlink" title="3.2.2 核心方法逻辑"></a>3.2.2 核心方法逻辑</h6><p>1.判断列表的数组类型</p>
+<p>2.根据数组类型来赋予初始容量</p>
+<p>3.列表的初始容量与参数进行对比，取其中的最大值</p>
+<p>4.将新容量设置为旧容量的值+旧容量的值的一半</p>
+<p>5.将新容量的值与参数进行对比，取其中最大值</p>
+<p>6.若参数最大则继续将其与数组的最大值做对比，取其中最大值</p>
+<p>7.若还是参数最大，则新容量设置为整型基本数据类型的最大长度</p>
+<p>8.返回新容量的列表</p>
+<h5 id="3-3-常用方法"><a href="#3-3-常用方法" class="headerlink" title="3.3 常用方法"></a>3.3 常用方法</h5><h6 id="3-3-1-trimToSize"><a href="#3-3-1-trimToSize" class="headerlink" title="3.3.1 trimToSize( )"></a>3.3.1 trimToSize( )</h6><pre><code> /**
+ * 将这个ArrayList实例的容量调整为列表的当前大小。可以使用此操作最小化ArrayList实例的存储。
+ */
+public void trimToSize() &#123;
+    modCount++;
+    if (size &lt; elementData.length) &#123; //如果列表的实际容量小于数组的长度也就是列表的最大容量
+    //判断实际容量是否为0，是0则设置为空数组，不为0则把最大容量设置为实际容量
+        elementData = (size == 0)  
+          ? EMPTY_ELEMENTDATA
+          : Arrays.copyOf(elementData, size);
+    &#125;
+&#125;</code></pre>
+<h6 id="3-3-2-size"><a href="#3-3-2-size" class="headerlink" title="3.3.2 size( )"></a>3.3.2 size( )</h6><pre><code>//获取列表的实际容量
+    public int size() &#123; 
+        return size;
+    &#125;</code></pre>
+<h6 id="3-3-3-isEmpty"><a href="#3-3-3-isEmpty" class="headerlink" title="3.3.3 isEmpty( )"></a>3.3.3 isEmpty( )</h6><pre><code>//根据列表的实际容量来判断列表是否为空
+    public boolean isEmpty() &#123; 
+        return size == 0;
+    &#125;</code></pre>
+<h6 id="3-3-4-contains-Object-o"><a href="#3-3-4-contains-Object-o" class="headerlink" title="3.3.4 contains(Object o)"></a>3.3.4 contains(Object o)</h6><pre><code>//判断是否含有指定的元素
+    public boolean contains(Object o) &#123; 
+    //查找指定的元素,找到则有，反之无
+        return indexOf(o) &gt;= 0; 
+    &#125;</code></pre>
+<h6 id="3-3-5-indexOf-Object-o"><a href="#3-3-5-indexOf-Object-o" class="headerlink" title="3.3.5 indexOf(Object o )"></a>3.3.5 indexOf(Object o )</h6><pre><code>//从数组头部开始查找指定的元素并返回元素下标
+    public int indexOf(Object o) &#123; 
+        //如果该元素为null
+        if (o == null) &#123; 
+            //对数组逐一遍历
+            for (int i = 0; i &lt; size; i++) 
+                //null没有equals方法，所以用==，并且分开进行判断并遍历
+                if (elementData[i]==null)  
+                    return i;  //返回该元素的下标
+        &#125; else &#123; //如果该元素不为null
+            for (int i = 0; i &lt; size; i++) //对数组逐一遍历
+                if (o.equals(elementData[i]))
+                    return i;  //返回该元素的下标
+        &#125;
+        return -1;  //没有找到返回-1
+    &#125;</code></pre>
+<h6 id="3-3-6-lastIndexOf-Object-o"><a href="#3-3-6-lastIndexOf-Object-o" class="headerlink" title="3.3.6 lastIndexOf(Object o)"></a>3.3.6 lastIndexOf(Object o)</h6><pre><code>//从数组尾部开始查找指定元素并返回元素下标
+    public int lastIndexOf(Object o) &#123; 
+        if (o == null) &#123;
+            for (int i = size-1; i &gt;= 0; i--)
+                if (elementData[i]==null)
+                    return i; //返回该元素的下标
+        &#125; else &#123;
+            for (int i = size-1; i &gt;= 0; i--)
+                if (o.equals(elementData[i]))
+                    return i; //返回该元素的下标
+        &#125;
+        return -1; //没有找到返回-1
+    &#125;</code></pre>
+<h6 id="3-3-7-clone"><a href="#3-3-7-clone" class="headerlink" title="3.3.7 clone()"></a>3.3.7 clone()</h6><pre><code>//重写该Cloneable接口后写的clone方法，表示自己支持克隆，属于浅拷贝
+    public Object clone() &#123; 
+        try &#123;
+            ArrayList&lt;?&gt; v = (ArrayList&lt;?&gt;) super.clone();
+            v.elementData = Arrays.copyOf(elementData, size);
+            v.modCount = 0;
+            return v;
+        &#125; catch (CloneNotSupportedException e) &#123;
+            // this shouldn&#39;t happen, since we are Cloneable
+            throw new InternalError(e);
+        &#125;
+    &#125;</code></pre>
+<h6 id="3-3-8-elementData-int-index"><a href="#3-3-8-elementData-int-index" class="headerlink" title="3.3.8 elementData(int index)"></a>3.3.8 elementData(int index)</h6><pre><code>// 位置访问操作
+    @SuppressWarnings(&quot;unchecked&quot;)
+    E elementData(int index) &#123;
+        return (E) elementData[index];
+    &#125;</code></pre>
+<h6 id="3-3-9-get-int-index"><a href="#3-3-9-get-int-index" class="headerlink" title="3.3.9 get(int index)"></a>3.3.9 get(int index)</h6><pre><code>//返回指定下标的元素
+public E get(int index) &#123;
+    rangeCheck(index); //边界判断
+
+    return elementData(index);
+&#125;</code></pre>
+<h6 id="3-3-10-set-int-index-E-element"><a href="#3-3-10-set-int-index-E-element" class="headerlink" title="3.3.10 set(int index, E element)"></a>3.3.10 set(int index, E element)</h6><pre><code>//把指定下标的元素设置为指定值
+public E set(int index, E element) &#123;
+    rangeCheck(index); //边界判断
+
+    E oldValue = elementData(index); //取出旧值以便返回
+    elementData[index] = element;
+    return oldValue;
+&#125;</code></pre>
+<p>3.3.11 add(E e)</p>
+<pre><code>/**
+  * 将指定的元素附加到此列表的末尾。
+  */
+ public boolean add(E e) &#123; 
+     ensureCapacityInternal(size + 1);  // 检查列表容量
+     elementData[size++] = e;
+     return true;
+ &#125;</code></pre>
+<h6 id="3-3-12-add-int-index-E-element"><a href="#3-3-12-add-int-index-E-element" class="headerlink" title="3.3.12 add(int index, E element)"></a>3.3.12 add(int index, E element)</h6><pre><code>/**
+ * 将指定元素插入到列表中的指定位置。将当前位于该位置的元素(如果有)和任何后续元素向右移动(将一个元素添加到它们的索引中)。
+ *
+ */
+public void add(int index, E element) &#123;
+    rangeCheckForAdd(index); //边界判定
+    ensureCapacityInternal(size + 1);  // 检查列表容量
+    System.arraycopy(elementData, index, elementData, index + 1,
+                     size - index); //将index位置的元素和后续元素向后移动一位
+    elementData[index] = element; //将指定元素插入到指定的值
+    size++;
+&#125;</code></pre>
+<h6 id="3-3-13-remove-int-index"><a href="#3-3-13-remove-int-index" class="headerlink" title="3.3.13 remove(int index)"></a>3.3.13 remove(int index)</h6><pre><code>//移除指定下标的元素
+    public E remove(int index) &#123;
+        rangeCheck(index); //边界判定，超出边界则抛出异常
+
+        modCount++;
+        E oldValue = elementData(index); //取出该位置下的值以便返回
+
+        int numMoved = size - index - 1; //index位置后的后续元素的数量
+        if (numMoved &gt; 0)
+            System.arraycopy(elementData, index+1, elementData, index,
+                             numMoved); //将index位置后的后续元素向前移动一位
+        elementData[--size] = null; //把原本列表末尾的值改为null
+
+        return oldValue;
+    &#125;</code></pre>
+<h6 id="3-3-14-remove-Object-o"><a href="#3-3-14-remove-Object-o" class="headerlink" title="3.3.14 remove(Object o)"></a>3.3.14 remove(Object o)</h6><pre><code>//移除指定元素
+    public boolean remove(Object o) &#123;
+        if (o == null) &#123; //因为null没有equals方法，所以分开两种情况讨论
+            for (int index = 0; index &lt; size; index++)
+                if (elementData[index] == null) &#123;
+                    fastRemove(index); //根据下标快速删除指定元素
+                    return true;
+                &#125;
+        &#125; else &#123;
+            for (int index = 0; index &lt; size; index++)
+                if (o.equals(elementData[index])) &#123;
+                    fastRemove(index);
+                    return true;
+                &#125;
+        &#125;
+        return false;
+    &#125;
+    //快速删除方法，与remove方法类似，但是没有下标检查也不返回删除的元素
+    private void fastRemove(int index) &#123;
+        modCount++;
+        int numMoved = size - index - 1;
+        if (numMoved &gt; 0)
+            System.arraycopy(elementData, index+1, elementData, index,
+                             numMoved);
+        elementData[--size] = null; // clear to let GC do its work
+    &#125;</code></pre>
+<h6 id="3-3-15-clear"><a href="#3-3-15-clear" class="headerlink" title="3.3.15 clear( )"></a>3.3.15 clear( )</h6><pre><code>/**
+     * 从列表中删除所有元素。该调用返回后，列表将为空。
+     */
+    public void clear() &#123;
+        modCount++;
+
+        // clear to let GC do its work
+        for (int i = 0; i &lt; size; i++) //逐一遍历，把值设置为null
+            elementData[i] = null;
+
+        size = 0;
+    &#125;</code></pre>
+<h6 id="3-3-16-addAll-Collection-lt-extends-E-gt-c"><a href="#3-3-16-addAll-Collection-lt-extends-E-gt-c" class="headerlink" title="3.3.16 addAll(Collection&lt;? extends E&gt; c)"></a>3.3.16 addAll(Collection&lt;? extends E&gt; c)</h6><pre><code>//将集合中的元素加入到列表的末尾
+    public boolean addAll(Collection&lt;? extends E&gt; c) &#123;
+        Object[] a = c.toArray();
+        int numNew = a.length;
+        ensureCapacityInternal(size + numNew);  // 判断容量
+        System.arraycopy(a, 0, elementData, size, numNew);
+        size += numNew;
+        return numNew != 0;
+    &#125;</code></pre>
+<h6 id="3-3-17-addAll-int-index-Collection-lt-extends-E-gt-c"><a href="#3-3-17-addAll-int-index-Collection-lt-extends-E-gt-c" class="headerlink" title="3.3.17 addAll(int index, Collection&lt;? extends E&gt; c)"></a>3.3.17 addAll(int index, Collection&lt;? extends E&gt; c)</h6><pre><code>//在指定的位置中插入集合元素
+    public boolean addAll(int index, Collection&lt;? extends E&gt; c) &#123;
+        rangeCheckForAdd(index); //边界判定，超出边界则抛出异常
+
+        Object[] a = c.toArray(); 
+        int numNew = a.length; //获取集合的长度
+        ensureCapacityInternal(size + numNew);  //检查列表容量
+
+        int numMoved = size - index; //获取需要向后移动的元素的数量
+        if (numMoved &gt; 0)
+            System.arraycopy(elementData, index, elementData, index + numNew,
+                             numMoved); //将index位置上的元素及后续元素向后移动
+
+        System.arraycopy(a, 0, elementData, index, numNew); //插入要插入的元素
+        size += numNew; //改变列表的实际容量
+        return numNew != 0;
+    &#125;</code></pre>
+<h6 id="3-3-18-removeRange-int-fromIndex-int-toIndex"><a href="#3-3-18-removeRange-int-fromIndex-int-toIndex" class="headerlink" title="3.3.18 removeRange(int fromIndex, int toIndex)"></a>3.3.18 removeRange(int fromIndex, int toIndex)</h6><pre><code>//删除指定范围的元素
+protected void removeRange(int fromIndex, int toIndex) &#123;
+    modCount++;
+    int numMoved = size - toIndex; //获取toIndex位置后的后续元素的数量
+    System.arraycopy(elementData, toIndex, elementData, fromIndex,
+                     numMoved); //将toIndex位置后的后续元素复制到从fromIndex开始的位置
+
+    // clear to let GC do its work
+    int newSize = size - (toIndex-fromIndex); //获取删除后的元素数量
+    for (int i = newSize; i &lt; size; i++) &#123; //将实际容量后的元素都设置null
+        elementData[i] = null;
+    &#125;
+    size = newSize; //设置新的实际容量为删除后的元素数量
+&#125;</code></pre>
+<h6 id="3-3-19-rangeCheck-int-index-和-rangeCheckForAdd-int-index"><a href="#3-3-19-rangeCheck-int-index-和-rangeCheckForAdd-int-index" class="headerlink" title="3.3.19 rangeCheck(int index) 和 rangeCheckForAdd(int index)"></a>3.3.19 rangeCheck(int index) 和 rangeCheckForAdd(int index)</h6><pre><code>//边界判定的方法
+   private void rangeCheck(int index) &#123;
+       if (index &gt;= size) //如果下标大于等于数组的长度，则抛出异常
+           throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+   &#125;
+
+   //边界判定的方法，用于插入元素，下标不能大于数组长度且小于0
+   private void rangeCheckForAdd(int index) &#123;
+       if (index &gt; size || index &lt; 0)
+           throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+   &#125;</code></pre>
+<h6 id="3-3-20-removeAll-Collection-lt-gt-c"><a href="#3-3-20-removeAll-Collection-lt-gt-c" class="headerlink" title="3.3.20 removeAll(Collection&lt;?&gt; c)"></a>3.3.20 removeAll(Collection&lt;?&gt; c)</h6><pre><code>/**
+ * 从该列表中删除指定集合中包含的所有元素。
+ */
+public boolean removeAll(Collection&lt;?&gt; c) &#123;
+    Objects.requireNonNull(c);
+    return batchRemove(c, false);
+&#125;</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/04/15/ArrayList%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" data-id="ckid8uxlv0001scux2kf21htx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" rel="tag">源码分析</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-MySQL启动服务中遇到的一个坑" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/15/MySQL%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/" class="article-date">
+  <time datetime="2020-03-14T16:00:00.000Z" itemprop="datePublished">2020-03-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%9D%91/">坑</a>►<a class="article-category-link" href="/categories/%E5%9D%91/MySQL/">MySQL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/15/MySQL%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/">MySQL启动服务中遇到的一个坑</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="MySQL启动服务中遇到的一个坑"><a href="#MySQL启动服务中遇到的一个坑" class="headerlink" title="MySQL启动服务中遇到的一个坑"></a>MySQL启动服务中遇到的一个坑</h3><hr>
+<p>因为某种原因，导致MySQL的安装文件被删，无奈对MySQL进行重新的安装以及配置。</p>
+<p>首先通过命令进行初始化</p>
+<blockquote>
+<p>初始化语句：mysqld –initialize –console</p>
+</blockquote>
+<p>通过初始化后，在开启MySQL服务的时候，坑出现了。</p>
+<blockquote>
+<p>开启MySQL服务语句：net start mysql</p>
+</blockquote>
+<p><strong>* 命令行中显示： MySQL 服务正在启动。MySQL服务无法启动。*</strong></p>
+<p>通过百度以及自己的思考，得出两个解决问题的方法：</p>
+<ul>
+<li>百度：把data文件删除，再重新进行初始化和启动服务。</li>
+<li>自己：可能是由于上次的mysql服务没有删除，导致有两个mysql服务，然后命令行默认启动的是上次的mysql服务，所以解决办法是：查看服务列表，通过命令*** sc delete mysql *<strong>把服务删除，再通过*** mysql –install *</strong>来重新按照服务，再进行初始化和启动服务。</li>
+</ul>
+<h6 id="最终自己的情况是如何解决的？"><a href="#最终自己的情况是如何解决的？" class="headerlink" title="最终自己的情况是如何解决的？"></a>最终自己的情况是如何解决的？</h6><p>就是通过自己分析出来的办法来进行解决的，当时也尝试过百度上的方法，但是问题任然出现，所以最后自己进行分析然后解决了问题。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/03/15/MySQL%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/" data-id="ckida46jm00001oux6x7uae7c" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9D%91/" rel="tag">坑</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
 
 </section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9D%91/">坑</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9D%91/MySQL/">MySQL</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Spring%E6%A1%86%E6%9E%B6%E8%A7%A3%E6%9E%90/">Spring框架解析</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%AE%97%E6%B3%95/">算法</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">源码分析</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/HashMap/">HashMap</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/HashSet/">HashSet</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/Hashtable/">Hashtable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/Stack/">Stack</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/Vector/">Vector</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">排序算法</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">计算机网络基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HashMap/" rel="tag">HashMap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HashSet/" rel="tag">HashSet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hashtable/" rel="tag">Hashtable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring%E6%A1%86%E6%9E%B6%E8%A7%A3%E6%9E%90/" rel="tag">Spring框架解析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stack/" rel="tag">Stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vector/" rel="tag">Vector</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" rel="tag">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9D%91/" rel="tag">坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag">排序算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" rel="tag">源码分析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" rel="tag">计算机网络基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/HashMap/" style="font-size: 10px;">HashMap</a> <a href="/tags/HashSet/" style="font-size: 10px;">HashSet</a> <a href="/tags/Hashtable/" style="font-size: 10px;">Hashtable</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Spring%E6%A1%86%E6%9E%B6%E8%A7%A3%E6%9E%90/" style="font-size: 10px;">Spring框架解析</a> <a href="/tags/Stack/" style="font-size: 10px;">Stack</a> <a href="/tags/Vector/" style="font-size: 10px;">Vector</a> <a href="/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">单例模式</a> <a href="/tags/%E5%9D%91/" style="font-size: 10px;">坑</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">学习笔记</a> <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" style="font-size: 13.33px;">排序算法</a> <a href="/tags/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" style="font-size: 16.67px;">源码分析</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">计算机网络基础</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/10/%E6%AF%8F%E5%A4%A9%E4%B8%80%E6%9D%A1%E7%AE%97%E6%B3%95%E9%A2%9820201110/">每天一条算法题</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/09/%E6%AF%8F%E5%A4%A9%E4%B8%80%E6%9D%A1%E7%AE%97%E6%B3%95%E9%A2%9820201109/">每天一条算法题</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/08/%E6%AF%8F%E5%A4%A9%E4%B8%80%E6%9D%A1%E7%AE%97%E6%B3%95%E9%A2%9820201108/">每天一条算法题</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/07/%E6%AF%8F%E5%A4%A9%E4%B8%80%E6%9D%A1%E7%AE%97%E6%B3%95%E9%A2%9820201107/">每天一条算法题</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/06/%E6%AF%8F%E5%A4%A9%E4%B8%80%E6%9D%A1%E7%AE%97%E6%B3%95%E9%A2%9820201106/">每天一条算法题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
 
 
 
   </div>
-</div>
-
-
-
-<!-- 如果是home模式的话，不在首页就显示footer，如果不是home模式的话 所有都显示footer -->
-
-
-
-
-
-<script src="/js/white.js"></script>
-
-
-
-    
-      
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
-
-      <script>hljs.initHighlightingOnLoad();</script>
-    
-
 </body>
 </html>
