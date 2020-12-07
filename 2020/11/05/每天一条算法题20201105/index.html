@@ -1,0 +1,426 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>  每天一条算法题 |    Franklin</title>
+  <meta name="description" content="A minimalist theme for hexo.">
+  <!-- 标签页图标 -->
+  
+
+  <!-- 图标库 -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- 动画库 -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fushaolei/cdn-white@1.0/css/animate.css"/>
+  
+  <!-- css文件 -->
+  
+<link rel="stylesheet" href="/css/white.css">
+
+  <!-- 代码高亮 -->
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.1/styles/github.css">
+
+    
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+
+<div class="menu-outer">
+    <div class="menu-inner">
+      <div class="menu-site-name  animate__animated  animate__fadeInUp">
+        <a href="/">
+          Franklin
+        </a>
+        
+      </div>
+      <div class="menu-group">
+        <ul class="menu-ul">
+        
+          <a href="/" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              HOME
+            </li>
+          </a>
+        
+          <a href="/archives" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              BLOG
+            </li>
+          </a>
+        
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="sort">
+             分类
+             <div class="categories-outer " id="sort-div">
+               <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9D%91/">坑</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9D%91/MySQL/">MySQL</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Spring%E6%A1%86%E6%9E%B6%E8%A7%A3%E6%9E%90/">Spring框架解析</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%AE%97%E6%B3%95/">算法</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">源码分析</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/HashMap/">HashMap</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/HashSet/">HashSet</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/Hashtable/">Hashtable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/Stack/">Stack</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/Vector/">Vector</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">排序算法</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">计算机网络基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+             </div>
+          </li>
+        
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="mobile-menu">
+            <i class="ri-menu-line"></i>
+          </li>
+        
+        </ul>
+
+      </div>
+
+    </div>
+</div>
+<div id="mobile-main" class="animate__animated  animate__fadeIn">
+  <div class="mobile-menu-inner">
+    <div class="mobile-menu-site-name animate__animated  animate__fadeInUp">
+      <a href="/">
+        Franklin
+      </a>
+    </div>
+    <div class="mobile-menu-group" id="mobile-close">
+      <i class="ri-close-line"></i>
+    </div>
+
+  </div>
+
+  <div class="mobile-menu-div">
+  
+    <a href="/" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>HOME</span>
+      </div>
+    </a>
+  
+    <a href="/archives" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>BLOG</span>
+      </div>
+    </a>
+  
+  
+  </div>
+
+
+</div>
+
+<div class="body-outer">
+  <div class="body-inner">
+    
+<article class="post-inner">
+  <div class="post-content-outer">
+    <div class="post-intro">
+      <div class="post-title animate__animated  animate__fadeInUp">每天一条算法题</div>
+      <div class="meta-intro animate__animated  animate__fadeInUp">Nov 05 2020</div>
+      
+    </div>
+    <div class="post-content-inner">
+      <div class="post-content-inner-space">
+
+      </div>
+      <div class="post-content-main animate__animated  animate__fadeInUp">
+        <!-- top型目录 -->
+        
+        <h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="每天一条算法题2020-11-05"><a href="#每天一条算法题2020-11-05" class="headerlink" title="每天一条算法题2020/11/05"></a>每天一条算法题2020/11/05</h3><p>给定整数 n 和 k，找到 1 到 n 中字典序第 k 小的数字。</p>
+<p>注意：1 ≤ k ≤ n ≤ 109。</p>
+<p>示例 :</p>
+<p>输入:<br>n: 13   k: 2</p>
+<p>输出:<br>10</p>
+<p>解释:<br>字典序的排列是 [1, 10, 11, 12, 13, 2, 3, 4, 5, 6, 7, 8, 9]，所以第二小的数字是 10。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/k-th-smallest-in-lexicographical-order">https://leetcode-cn.com/problems/k-th-smallest-in-lexicographical-order</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<pre><code class="java">/*其实这个字典数是“十叉树”，就是每个节点可以有十个孩子。
+但是由于n大小的限制，构成的并不是一个满十叉树。比如示例中1只有[10,11,12,13]四个孩子。
+那么这就是先序遍历十叉树的问题，难点就变成了如何计算出每个节点的子节点的个数，
+我们不停的用k减去子节点的个数，当k减到0的时候，当前位置的数字即为所求。*/
+
+class Solution &#123;
+    public int findKthNumber(int n, int k) &#123;
+        int cur = 1;
+        --k;
+
+        while (k &gt; 0) &#123; //此解答中k为0时表示已经到达了目标节点
+            long step = 0, first = cur, last = cur + 1;
+            //这里的代码是为了查找当前树的字典序的数字个数，因为存在父节点就是要寻找的目标数字的情况，所以要小于等于&lt;=
+            while (first &lt;= n) &#123;
+                step += Math.min(last, (long) n + 1) - first;//不能超过n的值，并不是所有节点都有十个子节点
+                first *= 10;
+                last *= 10;
+            &#125;
+            //如果数字个数大于k值，则证明寻找的数字在此树中
+            if (step &gt; k) &#123;
+                --k; //减去父节点的个数
+                cur *= 10; //继续查找该节点的字典序
+            &#125;
+            //step &lt;= k 时, 说明寻找的数字不在该树中
+            if (step &lt;= k) &#123;
+                k -= step;
+                ++cur;
+            &#125;
+        &#125;
+        return cur;
+
+    &#125;
+&#125;</code></pre>
+
+        <!-- 分类文章 -->
+        
+          <div class="post-categoris-bottom">
+            <div class="post-categoris-name">学习笔记</div>
+            <ul>
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2020/09/15/Bean%E7%9A%84%E8%A7%A3%E6%9E%90/" class="post-categoris-bottom-link">
+                  Bean的解析
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2020/10/09/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02020-10-09/" class="post-categoris-bottom-link">
+                  学习笔记2020-10-09
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="me base">
+                  <a  href="/2020/11/01/%E6%AF%8F%E5%A4%A9%E4%B8%80%E6%9D%A1%E7%AE%97%E6%B3%95%E9%A2%9820201101/" class="post-categoris-bottom-link">
+                  每天一条算法题
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="me base">
+                  <a  href="/2020/11/02/%E6%AF%8F%E5%A4%A9%E4%B8%80%E6%9D%A1%E7%AE%97%E6%B3%95%E9%A2%9820201102/" class="post-categoris-bottom-link">
+                  每天一条算法题
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="me base">
+                  <a  href="/2020/11/03/%E6%AF%8F%E5%A4%A9%E4%B8%80%E6%9D%A1%E7%AE%97%E6%B3%95%E9%A2%9820201103/" class="post-categoris-bottom-link">
+                  每天一条算法题
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="me base">
+                  <a  href="/2020/11/04/%E6%AF%8F%E5%A4%A9%E4%B8%80%E6%9D%A1%E7%AE%97%E6%B3%95%E9%A2%9820201104/" class="post-categoris-bottom-link">
+                  每天一条算法题
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+            
+            
+            
+              
+                <li class="me base">
+                  <a  href="/2020/11/05/%E6%AF%8F%E5%A4%A9%E4%B8%80%E6%9D%A1%E7%AE%97%E6%B3%95%E9%A2%9820201105/" class="post-categoris-bottom-link">
+                  每天一条算法题
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="me base">
+                  <a  href="/2020/11/06/%E6%AF%8F%E5%A4%A9%E4%B8%80%E6%9D%A1%E7%AE%97%E6%B3%95%E9%A2%9820201106/" class="post-categoris-bottom-link">
+                  每天一条算法题
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="me base">
+                  <a  href="/2020/11/07/%E6%AF%8F%E5%A4%A9%E4%B8%80%E6%9D%A1%E7%AE%97%E6%B3%95%E9%A2%9820201107/" class="post-categoris-bottom-link">
+                  每天一条算法题
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="me base">
+                  <a  href="/2020/11/08/%E6%AF%8F%E5%A4%A9%E4%B8%80%E6%9D%A1%E7%AE%97%E6%B3%95%E9%A2%9820201108/" class="post-categoris-bottom-link">
+                  每天一条算法题
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="me base">
+                  <a  href="/2020/11/09/%E6%AF%8F%E5%A4%A9%E4%B8%80%E6%9D%A1%E7%AE%97%E6%B3%95%E9%A2%9820201109/" class="post-categoris-bottom-link">
+                  每天一条算法题
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="me base">
+                  <a  href="/2020/11/10/%E6%AF%8F%E5%A4%A9%E4%B8%80%E6%9D%A1%E7%AE%97%E6%B3%95%E9%A2%9820201110/" class="post-categoris-bottom-link">
+                  每天一条算法题
+                </a>
+                </li>
+              
+              
+            
+            
+            </ul>
+
+          </div>
+
+        
+      </div>
+      <div class="post-content-inner-space">
+        
+          <div class="space-toc-main animate__animated  animate__fadeInUp">
+            
+           </div>
+        
+      </div>
+   </div>
+    <!-- 评论 -->
+    
+  </div>
+</article>
+  </div>
+</div>
+
+
+
+<!-- 如果是home模式的话，不在首页就显示footer，如果不是home模式的话 所有都显示footer -->
+
+  <div class="footer-outer animate__animated  animate__fadeInUp">
+    <div class="footer-inner">
+    <div class="footer-text">
+    <p>感谢你的观看，如有疑问请联系</p>
+
+    </div>
+    <div class="footer-contact">
+    <ul class="footer-ul">
+        
+        <li class="footer-li">
+            <a href="https://qo0581122.github.io/" target="_blank">
+                <i class="ri-github-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="mailto:1012428032@qq.com" target="_blank">
+                <i class="ri-mail-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="https://qo0581122.github.io/wechat/" target="_blank">
+                <i class="ri-chat-1-line"></i>
+            </a>
+        </li>
+        
+    </ul>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="/js/white.js"></script>
+
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+</body>
+</html>
