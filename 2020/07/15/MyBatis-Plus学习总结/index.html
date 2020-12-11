@@ -1,0 +1,646 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>  MyBatis-Plus学习总结 |    Franklin</title>
+  <meta name="description" content="A minimalist theme for hexo.">
+  <!-- 标签页图标 -->
+  
+
+  <!-- 图标库 -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- 动画库 -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fushaolei/cdn-white@1.0/css/animate.css"/>
+  
+  <!-- css文件 -->
+  
+<link rel="stylesheet" href="/css/white.css">
+
+  <!-- 代码高亮 -->
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.1/styles/github.css">
+
+    
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+
+<div class="menu-outer">
+    <div class="menu-inner">
+      <div class="menu-site-name  animate__animated  animate__fadeInUp">
+        <a href="/">
+          Franklin
+        </a>
+        
+      </div>
+      <div class="menu-group">
+        <ul class="menu-ul">
+        
+          <a href="/" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              HOME
+            </li>
+          </a>
+        
+          <a href="/archives" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              BLOG
+            </li>
+          </a>
+        
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="sort">
+             分类
+             <div class="categories-outer " id="sort-div">
+               <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/EasyExcel/">EasyExcel</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/EasyExcel/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyBatis-Plus/">MyBatis-Plus</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/MyBatis-Plus/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9D%91/">坑</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9D%91/MySQL/">MySQL</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Spring%E6%A1%86%E6%9E%B6%E8%A7%A3%E6%9E%90/">Spring框架解析</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%AE%97%E6%B3%95/">算法</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">源码分析</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/HashMap/">HashMap</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/HashSet/">HashSet</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/Hashtable/">Hashtable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/Stack/">Stack</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/Vector/">Vector</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">排序算法</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">计算机网络基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+             </div>
+          </li>
+        
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="mobile-menu">
+            <i class="ri-menu-line"></i>
+          </li>
+        
+        </ul>
+
+      </div>
+
+    </div>
+</div>
+<div id="mobile-main" class="animate__animated  animate__fadeIn">
+  <div class="mobile-menu-inner">
+    <div class="mobile-menu-site-name animate__animated  animate__fadeInUp">
+      <a href="/">
+        Franklin
+      </a>
+    </div>
+    <div class="mobile-menu-group" id="mobile-close">
+      <i class="ri-close-line"></i>
+    </div>
+
+  </div>
+
+  <div class="mobile-menu-div">
+  
+    <a href="/" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>HOME</span>
+      </div>
+    </a>
+  
+    <a href="/archives" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>BLOG</span>
+      </div>
+    </a>
+  
+  
+  </div>
+
+
+</div>
+
+<div class="body-outer">
+  <div class="body-inner">
+    
+<article class="post-inner">
+  <div class="post-content-outer">
+    <div class="post-intro">
+      <div class="post-title animate__animated  animate__fadeInUp">MyBatis-Plus学习总结</div>
+      <div class="meta-intro animate__animated  animate__fadeInUp">7月 15 2020</div>
+      
+    </div>
+    <div class="post-content-inner">
+      <div class="post-content-inner-space">
+
+      </div>
+      <div class="post-content-main animate__animated  animate__fadeInUp">
+        <!-- top型目录 -->
+        
+        <h1 id="MyBatis-Plus学习总结"><a href="#MyBatis-Plus学习总结" class="headerlink" title="MyBatis-Plus学习总结"></a>MyBatis-Plus学习总结</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/baomidou/mybatis-plus">MyBatis-Plus</a>（简称 MP）是一个 <a target="_blank" rel="noopener" href="http://www.mybatis.org/mybatis-3/">MyBatis</a> 的增强工具，在 MyBatis 的基础上只做增强不做改变，为简化开发、提高效率而生。</p>
+<p><a target="_blank" rel="noopener" href="https://mp.baomidou.com/guide/">MyBatis-Plus文档链接</a>：<a target="_blank" rel="noopener" href="https://mp.baomidou.com/guide/">https://mp.baomidou.com/guide/</a></p>
+</blockquote>
+<h2 id="SpringBoot整合MyBatis-Plus"><a href="#SpringBoot整合MyBatis-Plus" class="headerlink" title="SpringBoot整合MyBatis-Plus"></a>SpringBoot整合MyBatis-Plus</h2><pre><code class="xml">&lt;parent&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+    &lt;version&gt;2.3.1.RELEASE&lt;/version&gt;
+    &lt;relativePath/&gt;
+&lt;/parent&gt;</code></pre>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><pre><code class="yml"># DataSource Config
+spring:
+  datasource:
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/Shanghai</code></pre>
+<p>在 Spring Boot 启动类中添加 <code>@MapperScan</code> 注解，扫描 Mapper 文件夹：</p>
+<pre><code class="java">@SpringBootApplication
+@MapperScan(&quot;com.demo.example.mapper&quot;) //Mapper文件夹的位置
+public class Application &#123;
+
+    public static void main(String[] args) &#123;
+        SpringApplication.run(QuickStartApplication.class, args);
+    &#125;
+
+&#125;</code></pre>
+<h2 id="注解解析"><a href="#注解解析" class="headerlink" title="注解解析"></a>注解解析</h2><h3 id="TableName"><a href="#TableName" class="headerlink" title="@TableName"></a>@TableName</h3><p>表名注解</p>
+<table>
+<thead>
+<tr>
+<th align="center">属性</th>
+<th align="center">类型</th>
+<th align="center">必须指定</th>
+<th align="center">默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">value</td>
+<td align="center">String</td>
+<td align="center">否</td>
+<td align="center">“”</td>
+<td>表名</td>
+</tr>
+<tr>
+<td align="center">schema</td>
+<td align="center">String</td>
+<td align="center">否</td>
+<td align="center">“”</td>
+<td>schema</td>
+</tr>
+<tr>
+<td align="center">keepGlobalPrefix</td>
+<td align="center">boolean</td>
+<td align="center">否</td>
+<td align="center">false</td>
+<td>是否保持使用全局的 tablePrefix 的值(如果设置了全局 tablePrefix 且自行设置了 value 的值)</td>
+</tr>
+<tr>
+<td align="center">resultMap</td>
+<td align="center">String</td>
+<td align="center">否</td>
+<td align="center">“”</td>
+<td>xml 中 resultMap 的 id</td>
+</tr>
+<tr>
+<td align="center">autoResultMap</td>
+<td align="center">boolean</td>
+<td align="center">否</td>
+<td align="center">false</td>
+<td>是否自动构建 resultMap 并使用(如果设置 resultMap 则不会进行 resultMap 的自动构建并注入)</td>
+</tr>
+</tbody></table>
+<h3 id="TableId"><a href="#TableId" class="headerlink" title="@TableId"></a>@TableId</h3><p>主键注解</p>
+<table>
+<thead>
+<tr>
+<th align="center">属性</th>
+<th align="center">类型</th>
+<th align="center">必须指定</th>
+<th align="center">默认值</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">value</td>
+<td align="center">String</td>
+<td align="center">否</td>
+<td align="center">“”</td>
+<td align="center">主键字段名</td>
+</tr>
+<tr>
+<td align="center">type</td>
+<td align="center">Enum</td>
+<td align="center">否</td>
+<td align="center">IdType.NONE</td>
+<td align="center">主键类型</td>
+</tr>
+</tbody></table>
+<h4 id="IdType类型"><a href="#IdType类型" class="headerlink" title="IdType类型"></a>IdType类型</h4><table>
+<thead>
+<tr>
+<th>AUTO</th>
+<th>数据库ID自增</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NONE</td>
+<td>无状态,该类型为未设置主键类型(注解里等于跟随全局,全局里约等于 INPUT)</td>
+</tr>
+<tr>
+<td>INPUT</td>
+<td>insert前自行set主键值</td>
+</tr>
+<tr>
+<td>ASSIGN_ID</td>
+<td>分配ID(主键类型为Number(Long和Integer)或String)(since 3.3.0),使用接口<code>IdentifierGenerator</code>的方法<code>nextId</code>(默认实现类为<code>DefaultIdentifierGenerator</code>雪花算法)</td>
+</tr>
+<tr>
+<td>ASSIGN_UUID</td>
+<td>分配UUID,主键类型为String(since 3.3.0),使用接口<code>IdentifierGenerator</code>的方法<code>nextUUID</code>(默认default方法)</td>
+</tr>
+</tbody></table>
+<h3 id="TableField"><a href="#TableField" class="headerlink" title="@TableField"></a>@TableField</h3><table>
+<thead>
+<tr>
+<th align="center">属性</th>
+<th align="center">类型</th>
+<th align="center">必须指定</th>
+<th align="center">默认值</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">value</td>
+<td align="center">String</td>
+<td align="center">否</td>
+<td align="center">“”</td>
+<td align="center">数据库字段名</td>
+</tr>
+<tr>
+<td align="center">el</td>
+<td align="center">String</td>
+<td align="center">否</td>
+<td align="center">“”</td>
+<td align="center">映射为原生 <code>#&#123; ... &#125;</code> 逻辑,相当于写在 xml 里的 <code>#&#123; ... &#125;</code> 部分</td>
+</tr>
+<tr>
+<td align="center">exist</td>
+<td align="center">boolean</td>
+<td align="center">否</td>
+<td align="center">true</td>
+<td align="center">是否为数据库表字段</td>
+</tr>
+<tr>
+<td align="center">condition</td>
+<td align="center">String</td>
+<td align="center">否</td>
+<td align="center">“”</td>
+<td align="center">字段 <code>where</code> 实体查询比较条件,有值设置则按设置的值为准,没有则为默认全局的 <code>%s=#&#123;%s&#125;</code>,<a target="_blank" rel="noopener" href="https://github.com/baomidou/mybatis-plus/blob/3.0/mybatis-plus-annotation/src/main/java/com/baomidou/mybatisplus/annotation/SqlCondition.java">参考</a></td>
+</tr>
+<tr>
+<td align="center">update</td>
+<td align="center">String</td>
+<td align="center">否</td>
+<td align="center">“”</td>
+<td align="center">字段 <code>update set</code> 部分注入, 例如：update=”%s+1”：表示更新时会set version=version+1(该属性优先级高于 <code>el</code> 属性)</td>
+</tr>
+<tr>
+<td align="center">insertStrategy</td>
+<td align="center">Enum</td>
+<td align="center">N</td>
+<td align="center">DEFAULT</td>
+<td align="center">举例：NOT_NULL: <code>insert into table_a(&lt;if test=&quot;columnProperty != null&quot;&gt;column&lt;/if&gt;) values (&lt;if test=&quot;columnProperty != null&quot;&gt;#&#123;columnProperty&#125;&lt;/if&gt;)</code></td>
+</tr>
+<tr>
+<td align="center">updateStrategy</td>
+<td align="center">Enum</td>
+<td align="center">N</td>
+<td align="center">DEFAULT</td>
+<td align="center">举例：IGNORED: <code>update table_a set column=#&#123;columnProperty&#125;</code></td>
+</tr>
+<tr>
+<td align="center">whereStrategy</td>
+<td align="center">Enum</td>
+<td align="center">N</td>
+<td align="center">DEFAULT</td>
+<td align="center">举例：NOT_EMPTY: <code>where &lt;if test=&quot;columnProperty != null and columnProperty!=&#39;&#39;&quot;&gt;column=#&#123;columnProperty&#125;&lt;/if&gt;</code></td>
+</tr>
+<tr>
+<td align="center">fill</td>
+<td align="center">Enum</td>
+<td align="center">否</td>
+<td align="center">FieldFill.DEFAULT</td>
+<td align="center">字段自动填充策略</td>
+</tr>
+<tr>
+<td align="center">select</td>
+<td align="center">boolean</td>
+<td align="center">否</td>
+<td align="center">true</td>
+<td align="center">是否进行 select 查询</td>
+</tr>
+<tr>
+<td align="center">keepGlobalFormat</td>
+<td align="center">boolean</td>
+<td align="center">否</td>
+<td align="center">false</td>
+<td align="center">是否保持使用全局的 format 进行处理</td>
+</tr>
+<tr>
+<td align="center">jdbcType</td>
+<td align="center">JdbcType</td>
+<td align="center">否</td>
+<td align="center">JdbcType.UNDEFINED</td>
+<td align="center">JDBC类型 (该默认值不代表会按照该值生效)</td>
+</tr>
+<tr>
+<td align="center">typeHandler</td>
+<td align="center">Class&lt;? extends TypeHandler&gt;</td>
+<td align="center">否</td>
+<td align="center">UnknownTypeHandler.class</td>
+<td align="center">类型处理器 (该默认值不代表会按照该值生效)</td>
+</tr>
+<tr>
+<td align="center">numericScale</td>
+<td align="center">String</td>
+<td align="center">否</td>
+<td align="center">“”</td>
+<td align="center">指定小数点后保留的位数</td>
+</tr>
+</tbody></table>
+<h4 id="FieldStrategy类型"><a href="#FieldStrategy类型" class="headerlink" title="FieldStrategy类型"></a>FieldStrategy类型</h4><table>
+<thead>
+<tr>
+<th align="center">值</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">IGNORED</td>
+<td align="center">忽略判断</td>
+</tr>
+<tr>
+<td align="center">NOT_NULL</td>
+<td align="center">非NULL判断</td>
+</tr>
+<tr>
+<td align="center">NOT_EMPTY</td>
+<td align="center">非空判断(只对字符串类型字段,其他类型字段依然为非NULL判断)</td>
+</tr>
+<tr>
+<td align="center">DEFAULT</td>
+<td align="center">追随全局配置</td>
+</tr>
+</tbody></table>
+<h4 id="FieldFill类型"><a href="#FieldFill类型" class="headerlink" title="FieldFill类型"></a>FieldFill类型</h4><table>
+<thead>
+<tr>
+<th>DEFAULT</th>
+<th>默认不处理</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>INSERT</td>
+<td>插入时填充字段</td>
+</tr>
+<tr>
+<td>UPDATE</td>
+<td>更新时填充字段</td>
+</tr>
+<tr>
+<td>INSERT_UPDATE</td>
+<td>插入和更新时填充字段</td>
+</tr>
+</tbody></table>
+<h3 id="注解解析小Demo"><a href="#注解解析小Demo" class="headerlink" title="注解解析小Demo"></a>注解解析小Demo</h3><pre><code class="java">@TableName(value = &quot;user&quot;)
+public class User implements Serializable &#123;
+    @TableId(value = &quot;id&quot;, type = IdType.AUTO)
+    private Integer id;
+    @TableField(value = &quot;user_name&quot;)
+    private String userName;
+    @TableField //可以不指定value，只要变量名跟字段名相同
+    private String passWord;
+    @TableField(exit = false) //表示数据库不存在该字段，不用进行映射
+    private String email;
+&#125;</code></pre>
+<h2 id="核心功能"><a href="#核心功能" class="headerlink" title="核心功能"></a>核心功能</h2><h3 id="CRUD接口"><a href="#CRUD接口" class="headerlink" title="CRUD接口"></a>CRUD接口</h3><blockquote>
+<p>可以选择继承Service CRUD 接口 或者是 Mapper CRUD 接口来实现增删改查操作</p>
+</blockquote>
+<h4 id="Service-CRUD-接口"><a href="#Service-CRUD-接口" class="headerlink" title="Service  CRUD 接口"></a>Service  CRUD 接口</h4><blockquote>
+<p>说明:</p>
+<ul>
+<li>通用 Service CRUD 封装IService接口，进一步封装 CRUD 采用 <code>get 查询单行</code> <code>remove 删除</code> <code>list 查询集合</code> <code>page 分页</code> 前缀命名方式区分 <code>Mapper</code> 层避免混淆，</li>
+<li>泛型 <code>T</code> 为任意实体对象</li>
+<li>建议如果存在自定义通用 Service 方法的可能，请创建自己的 <code>IBaseService</code> 继承 <code>Mybatis-Plus</code> 提供的基类</li>
+<li>对象 <code>Wrapper</code> 为 条件构造器</li>
+</ul>
+</blockquote>
+<h4 id="Mapper-CRUD-接口"><a href="#Mapper-CRUD-接口" class="headerlink" title="Mapper CRUD 接口"></a>Mapper CRUD 接口</h4><blockquote>
+<p>说明:</p>
+<ul>
+<li>通用 CRUD 封装BaseMapper接口，为 <code>Mybatis-Plus</code> 启动时自动解析实体表关系映射转换为 <code>Mybatis</code> 内部对象注入容器</li>
+<li>泛型 <code>T</code> 为任意实体对象</li>
+<li>参数 <code>Serializable</code> 为任意类型主键 <code>Mybatis-Plus</code> 不推荐使用复合主键约定每一张表都有自己的唯一 <code>id</code> 主键</li>
+<li>对象 <code>Wrapper</code> 为 条件构造器</li>
+</ul>
+</blockquote>
+<h3 id="条件构造器"><a href="#条件构造器" class="headerlink" title="条件构造器"></a>条件构造器</h3><blockquote>
+<p>具体API和代码请点击<a target="_blank" rel="noopener" href="https://mp.baomidou.com/guide/wrapper.html">条件构造器</a></p>
+<p>或者点击 ： <a target="_blank" rel="noopener" href="https://mp.baomidou.com/guide/wrapper.html">https://mp.baomidou.com/guide/wrapper.html</a></p>
+</blockquote>
+<h4 id="条件构造器Demo"><a href="#条件构造器Demo" class="headerlink" title="条件构造器Demo"></a>条件构造器Demo</h4><pre><code class="java">/**
+ * 查询User年龄在10~20之间的user列表
+ */
+public List&lt;User&gt; listUsers() &#123;
+    QueryWrapper&lt;User&gt; wrapper = new QueryWrapper&lt;User&gt;();
+    wrapper.between(&quot;age&quot;, 10, 20);
+    return userMapper.selectList(wrapper);
+&#125;</code></pre>
+
+        <!-- 分类文章 -->
+        
+          <div class="post-categoris-bottom">
+            <div class="post-categoris-name">MyBatis-Plus</div>
+            <ul>
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+                <li class="me base">
+                  <a  href="/2020/07/15/MyBatis-Plus%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" class="post-categoris-bottom-link">
+                  MyBatis-Plus学习总结
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            </ul>
+
+          </div>
+
+        
+      </div>
+      <div class="post-content-inner-space">
+        
+          <div class="space-toc-main animate__animated  animate__fadeInUp">
+            
+           </div>
+        
+      </div>
+   </div>
+    <!-- 评论 -->
+    
+  </div>
+</article>
+  </div>
+</div>
+
+
+
+<!-- 如果是home模式的话，不在首页就显示footer，如果不是home模式的话 所有都显示footer -->
+
+  <div class="footer-outer animate__animated  animate__fadeInUp">
+    <div class="footer-inner">
+    <div class="footer-text">
+    <p>感谢你的观看，如有疑问请联系</p>
+
+    </div>
+    <div class="footer-contact">
+    <ul class="footer-ul">
+        
+        <li class="footer-li">
+            <a href="https://qo0581122.github.io/" target="_blank">
+                <i class="ri-github-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="mailto:1012428032@qq.com" target="_blank">
+                <i class="ri-mail-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="/wechat" target="_blank">
+                <i class="ri-chat-1-line"></i>
+            </a>
+        </li>
+        
+    </ul>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="/js/white.js"></script>
+
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+</body>
+</html>
